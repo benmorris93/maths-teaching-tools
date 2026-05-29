@@ -106,12 +106,24 @@ function renderResults(responses) {
       `;
     }).join("");
 
-    return `
-      <section class="question-result">
-        <h2>Q${questionIndex + 1}: <span class="math-text">${question.question}</span></h2>
-        ${optionRows}
-      </section>
-    `;
+    const diagramHtml =
+  question.diagram && question.diagram.type === "svg" && question.diagram.content
+    ? `
+      <div class="results-diagram">
+        <div class="results-diagram-inner">
+          ${question.diagram.content}
+        </div>
+      </div>
+    `
+    : "";
+
+return `
+  <section class="question-result">
+    <h2>Q${questionIndex + 1}: <span class="math-text">${question.question}</span></h2>
+    ${diagramHtml}
+    ${optionRows}
+  </section>
+`;
   }).join("");
 
   renderMathIn(resultsOutput);
