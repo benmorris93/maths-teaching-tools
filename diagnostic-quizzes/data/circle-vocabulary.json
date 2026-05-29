@@ -1,0 +1,260 @@
+{
+"quizTitle": "Circle Vocabulary",
+"feedbackMode": "immediate",
+"attemptsPerQuestion": 1,
+"revealCorrectAnswer": true,
+"questions": [
+{
+"id": "q1",
+"question": "Which word means the perimeter of a circle?",
+"options": [
+{
+"label": "A",
+"text": "Radius",
+"correct": false,
+"feedback": "Not quite. The radius is the distance from the centre to the circumference."
+},
+{
+"label": "B",
+"text": "Diameter",
+"correct": false,
+"feedback": "Not quite. The diameter is a line through the centre from one side of the circle to the other."
+},
+{
+"label": "C",
+"text": "Circumference",
+"correct": true,
+"feedback": "Correct. The circumference is the perimeter of a circle."
+},
+{
+"label": "D",
+"text": "Sector",
+"correct": false,
+"feedback": "Not quite. A sector is part of a circle enclosed by two radii and an arc."
+}
+]
+},
+{
+"id": "q2",
+"question": "Which diagram shows a radius?",
+"diagram": {
+"type": "svg",
+"content": "<svg viewBox='0 0 520 230' xmlns='http://www.w3.org/2000/svg'><g font-family='Arial' font-size='24' text-anchor='middle' fill='#17202a'><text x='90' y='30'>A</text><circle cx='90' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><line x1='35' y1='115' x2='145' y2='115' stroke='#17202a' stroke-width='4'/><text x='220' y='30'>B</text><circle cx='220' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><line x1='220' y1='115' x2='275' y2='115' stroke='#17202a' stroke-width='4'/><circle cx='220' cy='115' r='4' fill='#17202a'/><text x='350' y='30'>C</text><circle cx='350' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><line x1='310' y1='80' x2='390' y2='150' stroke='#17202a' stroke-width='4'/><text x='480' y='30'>D</text><circle cx='480' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><path d='M440 70 A55 55 0 0 1 520 115' fill='none' stroke='#17202a' stroke-width='7'/></g></svg>"
+},
+"options": [
+{
+"label": "A",
+"text": "A",
+"correct": false,
+"feedback": "Not quite. A line across the whole circle through the centre is a diameter."
+},
+{
+"label": "B",
+"text": "B",
+"correct": true,
+"feedback": "Correct. A radius goes from the centre to the circumference."
+},
+{
+"label": "C",
+"text": "C",
+"correct": false,
+"feedback": "Not quite. A line joining two points on the circumference is a chord."
+},
+{
+"label": "D",
+"text": "D",
+"correct": false,
+"feedback": "Not quite. Part of the circumference is an arc."
+}
+]
+},
+{
+"id": "q3",
+"question": "Which statement about radius and diameter is true?",
+"options": [
+{
+"label": "A",
+"text": "The radius is always double the diameter.",
+"correct": false,
+"feedback": "Not quite. The diameter is double the radius."
+},
+{
+"label": "B",
+"text": "The diameter is always half the radius.",
+"correct": false,
+"feedback": "Not quite. The radius is half the diameter."
+},
+{
+"label": "C",
+"text": "The diameter is always double the radius.",
+"correct": true,
+"feedback": "Correct. A diameter is made from two radii."
+},
+{
+"label": "D",
+"text": "The radius and diameter are always the same length.",
+"correct": false,
+"feedback": "Not quite. The diameter is longer than the radius."
+}
+]
+},
+{
+"id": "q4",
+"question": "The diameter of a circle is $18\text{ cm}$. What is the radius?",
+"options": [
+{
+"label": "A",
+"text": "$9\text{ cm}$",
+"correct": true,
+"feedback": "Correct. The radius is half the diameter."
+},
+{
+"label": "B",
+"text": "$18\text{ cm}$",
+"correct": false,
+"feedback": "Not quite. The radius is not the same as the diameter."
+},
+{
+"label": "C",
+"text": "$36\text{ cm}$",
+"correct": false,
+"feedback": "Not quite. Doubling the diameter does not find the radius."
+},
+{
+"label": "D",
+"text": "$6\text{ cm}$",
+"correct": false,
+"feedback": "Not quite. The radius is found by halving 18."
+}
+]
+},
+{
+"id": "q5",
+"question": "Which diagram shows a tangent?",
+"diagram": {
+"type": "svg",
+"content": "<svg viewBox='0 0 520 230' xmlns='http://www.w3.org/2000/svg'><g font-family='Arial' font-size='24' text-anchor='middle' fill='#17202a'><text x='90' y='30'>A</text><circle cx='90' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><line x1='35' y1='115' x2='145' y2='115' stroke='#17202a' stroke-width='4'/><text x='220' y='30'>B</text><circle cx='220' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><line x1='170' y1='70' x2='270' y2='160' stroke='#17202a' stroke-width='4'/><text x='350' y='30'>C</text><circle cx='350' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><line x1='295' y1='170' x2='405' y2='170' stroke='#17202a' stroke-width='4'/><text x='480' y='30'>D</text><circle cx='480' cy='115' r='55' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><path d='M440 75 A55 55 0 0 1 520 115' fill='none' stroke='#17202a' stroke-width='7'/></g></svg>"
+},
+"options": [
+{
+"label": "A",
+"text": "A",
+"correct": false,
+"feedback": "Not quite. This line passes through the circle."
+},
+{
+"label": "B",
+"text": "B",
+"correct": false,
+"feedback": "Not quite. This line crosses the circle at two points."
+},
+{
+"label": "C",
+"text": "C",
+"correct": true,
+"feedback": "Correct. A tangent touches a circle at exactly one point."
+},
+{
+"label": "D",
+"text": "D",
+"correct": false,
+"feedback": "Not quite. This curved part is an arc."
+}
+]
+},
+{
+"id": "q6",
+"question": "Which word describes the line segment joining two points on the circumference?",
+"options": [
+{
+"label": "A",
+"text": "Chord",
+"correct": true,
+"feedback": "Correct. A chord joins two points on the circumference."
+},
+{
+"label": "B",
+"text": "Arc",
+"correct": false,
+"feedback": "Not quite. An arc is part of the circumference."
+},
+{
+"label": "C",
+"text": "Sector",
+"correct": false,
+"feedback": "Not quite. A sector is a region made by two radii and an arc."
+},
+{
+"label": "D",
+"text": "Tangent",
+"correct": false,
+"feedback": "Not quite. A tangent touches the circle at exactly one point."
+}
+]
+},
+{
+"id": "q7",
+"question": "Ron says, "A diameter is also a chord." Is Ron correct?",
+"options": [
+{
+"label": "A",
+"text": "Yes, because it joins two points on the circumference.",
+"correct": true,
+"feedback": "Correct. A diameter is a special chord that passes through the centre."
+},
+{
+"label": "B",
+"text": "Yes, because it only touches the circle once.",
+"correct": false,
+"feedback": "Not quite. A line that touches the circle once is a tangent."
+},
+{
+"label": "C",
+"text": "No, because a chord must not pass through the centre.",
+"correct": false,
+"feedback": "Not quite. A chord can pass through the centre."
+},
+{
+"label": "D",
+"text": "No, because a diameter is curved.",
+"correct": false,
+"feedback": "Not quite. A diameter is a straight line segment."
+}
+]
+},
+{
+"id": "q8",
+"question": "Which word describes the shaded region?",
+"diagram": {
+"type": "svg",
+"content": "<svg viewBox='0 0 320 240' xmlns='http://www.w3.org/2000/svg'><circle cx='160' cy='120' r='80' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><path d='M103 64 A80 80 0 0 0 103 176 L103 64 Z' fill='#cfe8f3' stroke='#17202a' stroke-width='4'/><text x='160' y='225' text-anchor='middle' font-size='22' font-family='Arial' fill='#17202a'>shaded part</text></svg>"
+},
+"options": [
+{
+"label": "A",
+"text": "Radius",
+"correct": false,
+"feedback": "Not quite. A radius is a line from the centre to the circumference."
+},
+{
+"label": "B",
+"text": "Arc",
+"correct": false,
+"feedback": "Not quite. An arc is the curved edge, not the whole region."
+},
+{
+"label": "C",
+"text": "Segment",
+"correct": true,
+"feedback": "Correct. A segment is the region enclosed by a chord and an arc."
+},
+{
+"label": "D",
+"text": "Tangent",
+"correct": false,
+"feedback": "Not quite. A tangent is a straight line that touches a circle once."
+}
+]
+}
+]
+}
