@@ -363,7 +363,7 @@ select, .refresh-btn { width: 100%; border: 2px solid var(--border); border-radi
 .option-row.correct-option { font-weight: 850; }
 .option-badge { width: 44px; height: 44px; border-radius: 14px; background: #e8f4f8; color: var(--accent); display: inline-flex; align-items: center; justify-content: center; font-weight: 900; }
 .option-bar-shell { height: 18px; background: #e7f0f5; border-radius: 999px; overflow: hidden; }
-.option-bar { height: 100%; width: 0%; background: var(--accent); border-radius: 999px; }
+.option-bar { height: 100%; width: 0%; background: var(--incorrect-border); border-radius: 999px; }
 .correct-option .option-bar { background: var(--correct-border); }
 .percentage, .count { text-align: right; font-variant-numeric: tabular-nums; }
 .empty-state { padding: 24px; border: 2px dashed var(--border); border-radius: 20px; color: var(--muted); font-size: 1.15rem; }
