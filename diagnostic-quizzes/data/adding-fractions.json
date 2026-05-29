@@ -1,0 +1,248 @@
+{
+  "quizTitle": "Adding Fractions",
+  "feedbackMode": "immediate",
+  "attemptsPerQuestion": 1,
+  "revealCorrectAnswer": true,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "$\\frac{2}{7} + \\frac{3}{7}$",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{5}{14}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{7}$. Keep the denominator the same."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{5}{7}$",
+          "correct": true,
+          "feedback": "Correct. Add the numerators and keep the denominator."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{6}{7}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{7}$. Do not multiply the numerators."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{1}{7}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{7}$. This is addition, not subtraction."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "$\\frac{4}{9} + \\frac{2}{9}$",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{6}{9}$",
+          "correct": true,
+          "feedback": "Correct. Add the numerators and keep the denominator."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{6}{18}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{6}{9}$. Keep the denominator the same."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{8}{9}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{6}{9}$. This looks like multiplying numerators."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{2}{9}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{6}{9}$. $4+2=6$."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "$\\frac{8}{11} - \\frac{3}{11}$",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{5}{0}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{11}$. Keep the denominator the same."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{5}{11}$",
+          "correct": true,
+          "feedback": "Correct. Subtract the numerators and keep the denominator."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{11}{11}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{11}$. $8-3=5$."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{24}{11}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{11}$. This looks like multiplying."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "$\\frac{5}{6} - \\frac{1}{6}$",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{4}{6}$",
+          "correct": true,
+          "feedback": "Correct. Subtract the numerators and keep the denominator."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{4}{0}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{4}{6}$. Do not subtract the denominators."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{6}{6}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{4}{6}$. $5-1=4$."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{5}{36}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{4}{6}$. This is not multiplication."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Which is equal to $\\frac{3}{8} + \\frac{2}{8}$?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{5}{8}$",
+          "correct": true,
+          "feedback": "Correct. The denominator stays as 8."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{5}{16}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{8}$. Do not add the denominators."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{6}{8}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{8}$. Add $3+2$."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{1}{8}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{8}$. This is addition, not subtraction."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Which is equal to $\\frac{7}{10} - \\frac{4}{10}$?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{3}{0}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{3}{10}$. Keep the denominator the same."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{11}{10}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{3}{10}$. This is subtraction, not addition."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{28}{10}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{3}{10}$. This is not multiplication."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{3}{10}$",
+          "correct": true,
+          "feedback": "Correct. $7-4=3$, and the denominator stays 10."
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "$\\frac{1}{5} + \\frac{3}{5} + \\frac{1}{5}$",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{5}{15}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{5}$. Keep the denominator the same."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{5}{5}$",
+          "correct": true,
+          "feedback": "Correct. $1+3+1=5$."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{3}{5}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{5}$. Add all three numerators."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{1}{5}$",
+          "correct": false,
+          "feedback": "Correct answer: $\\frac{5}{5}$. This is the total, not one part."
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Which rule is correct for adding fractions with the same denominator?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Add the numerators and denominators",
+          "correct": false,
+          "feedback": "Correct answer: C. The denominator stays the same."
+        },
+        {
+          "label": "B",
+          "text": "Multiply the numerators",
+          "correct": false,
+          "feedback": "Correct answer: C. This is addition, not multiplication."
+        },
+        {
+          "label": "C",
+          "text": "Add the numerators and keep the denominator",
+          "correct": true,
+          "feedback": "Correct. Only the numerators change."
+        },
+        {
+          "label": "D",
+          "text": "Keep the numerator and add the denominators",
+          "correct": false,
+          "feedback": "Correct answer: C. Add the numerators."
+        }
+      ]
+    }
+  ]
+}

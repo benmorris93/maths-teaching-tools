@@ -1,0 +1,248 @@
+{
+  "quizTitle": "Factors and Multiples",
+  "feedbackMode": "immediate",
+  "attemptsPerQuestion": 1,
+  "revealCorrectAnswer": true,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Which number is a factor of 24?",
+      "options": [
+        {
+          "label": "A",
+          "text": "5",
+          "correct": false,
+          "feedback": "Correct answer: 6. 5 does not divide exactly into 24."
+        },
+        {
+          "label": "B",
+          "text": "6",
+          "correct": true,
+          "feedback": "Correct. 24 ÷ 6 = 4, so 6 is a factor."
+        },
+        {
+          "label": "C",
+          "text": "10",
+          "correct": false,
+          "feedback": "Correct answer: 6. 10 does not divide exactly into 24."
+        },
+        {
+          "label": "D",
+          "text": "48",
+          "correct": false,
+          "feedback": "Correct answer: 6. 48 is a multiple of 24, not a factor."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Which number is a multiple of 7?",
+      "options": [
+        {
+          "label": "A",
+          "text": "21",
+          "correct": true,
+          "feedback": "Correct. 21 is in the 7 times table."
+        },
+        {
+          "label": "B",
+          "text": "17",
+          "correct": false,
+          "feedback": "Correct answer: 21. Multiples of 7 are in the 7 times table."
+        },
+        {
+          "label": "C",
+          "text": "27",
+          "correct": false,
+          "feedback": "Correct answer: 21. 27 is not in the 7 times table."
+        },
+        {
+          "label": "D",
+          "text": "1",
+          "correct": false,
+          "feedback": "Correct answer: 21. 1 is a factor of 7, not a multiple of 7."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Which statement is true?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3 is a multiple of 18",
+          "correct": false,
+          "feedback": "Correct answer: C. 3 is a factor of 18, not a multiple."
+        },
+        {
+          "label": "B",
+          "text": "18 is a factor of 3",
+          "correct": false,
+          "feedback": "Correct answer: C. A factor must divide exactly into the number."
+        },
+        {
+          "label": "C",
+          "text": "3 is a factor of 18",
+          "correct": true,
+          "feedback": "Correct. 18 ÷ 3 = 6."
+        },
+        {
+          "label": "D",
+          "text": "18 is not linked to 3",
+          "correct": false,
+          "feedback": "Correct answer: C. 18 is linked to 3 because 3 × 6 = 18."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Which list shows only factors of 20?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1, 2, 4, 5, 10, 20",
+          "correct": true,
+          "feedback": "Correct. Each number divides exactly into 20."
+        },
+        {
+          "label": "B",
+          "text": "1, 2, 3, 4, 5, 20",
+          "correct": false,
+          "feedback": "Correct answer: A. 3 does not divide exactly into 20."
+        },
+        {
+          "label": "C",
+          "text": "2, 4, 6, 8, 10",
+          "correct": false,
+          "feedback": "Correct answer: A. These are even numbers, not all factors of 20."
+        },
+        {
+          "label": "D",
+          "text": "20, 40, 60, 80",
+          "correct": false,
+          "feedback": "Correct answer: A. These are multiples of 20, not factors."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "What is the highest common factor of 12 and 18?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3",
+          "correct": false,
+          "feedback": "Correct answer: 6. 3 is common, but it is not the highest."
+        },
+        {
+          "label": "B",
+          "text": "6",
+          "correct": true,
+          "feedback": "Correct. 6 is the highest number that divides into both."
+        },
+        {
+          "label": "C",
+          "text": "12",
+          "correct": false,
+          "feedback": "Correct answer: 6. 12 does not divide exactly into 18."
+        },
+        {
+          "label": "D",
+          "text": "36",
+          "correct": false,
+          "feedback": "Correct answer: 6. 36 is a common multiple, not a factor."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What is the lowest common multiple of 4 and 6?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2",
+          "correct": false,
+          "feedback": "Correct answer: 12. 2 is a common factor, not a multiple."
+        },
+        {
+          "label": "B",
+          "text": "10",
+          "correct": false,
+          "feedback": "Correct answer: 12. This is the sum, not the LCM."
+        },
+        {
+          "label": "C",
+          "text": "12",
+          "correct": true,
+          "feedback": "Correct. 12 is the first number in both times tables."
+        },
+        {
+          "label": "D",
+          "text": "24",
+          "correct": false,
+          "feedback": "Correct answer: 12. 24 is common, but not the lowest."
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "Which number is both a factor of 30 and a multiple of 10?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3",
+          "correct": false,
+          "feedback": "Correct answer: 10. 3 is a factor of 30, but not a multiple of 10."
+        },
+        {
+          "label": "B",
+          "text": "10",
+          "correct": true,
+          "feedback": "Correct. 10 divides into 30 and is in the 10 times table."
+        },
+        {
+          "label": "C",
+          "text": "15",
+          "correct": false,
+          "feedback": "Correct answer: 10. 15 is a factor of 30, but not a multiple of 10."
+        },
+        {
+          "label": "D",
+          "text": "25",
+          "correct": false,
+          "feedback": "Correct answer: 10. 25 is not a factor of 30 or a multiple of 10."
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "A number is a factor of 36. Which one could it be?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8",
+          "correct": false,
+          "feedback": "Correct answer: 9. 8 does not divide exactly into 36."
+        },
+        {
+          "label": "B",
+          "text": "9",
+          "correct": true,
+          "feedback": "Correct. 36 ÷ 9 = 4."
+        },
+        {
+          "label": "C",
+          "text": "14",
+          "correct": false,
+          "feedback": "Correct answer: 9. 14 does not divide exactly into 36."
+        },
+        {
+          "label": "D",
+          "text": "72",
+          "correct": false,
+          "feedback": "Correct answer: 9. 72 is a multiple of 36, not a factor."
+        }
+      ]
+    }
+  ]
+}
