@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Results Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <a class="home-link" href="./">← Quizzes</a>
+      <a class="home-link" href="../">Home</a>
+      <h1 class="menu-title">Results Dashboard</h1>
+      <p class="menu-subtitle">Anonymous class summary by question.</p>
+
+      <div class="controls">
+        <div class="control-group">
+          <label for="quiz-select">Quiz</label>
+          <select id="quiz-select"></select>
+        </div>
+        <div class="control-group">
+          <label for="time-select">Time window</label>
+          <select id="time-select">
+            <option value="15">Last 15 minutes</option>
+            <option value="30">Last 30 minutes</option>
+            <option value="60" selected>Last 1 hour</option>
+            <option value="today">Today</option>
+          </select>
+        </div>
+        <button class="refresh-btn" id="refresh-btn">Refresh</button>
+      </div>
+
+      <div class="results-summary" id="results-summary"></div>
+      <div id="results-output"></div>
+    </section>
+  </main>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+  <script type="module" src="results.js"></script>
+</body>
+</html>
