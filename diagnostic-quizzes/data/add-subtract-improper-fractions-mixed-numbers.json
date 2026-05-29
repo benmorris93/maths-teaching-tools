@@ -1,0 +1,252 @@
+{
+  "quizTitle": "Add and Subtract Improper Fractions and Mixed Numbers",
+  "feedbackMode": "immediate",
+  "attemptsPerQuestion": 1,
+  "revealCorrectAnswer": true,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Write $2\\frac{1}{2}$ as an improper fraction.",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{3}{2}$",
+          "correct": false,
+          "feedback": "Not quite. The whole number means two whole halves as well as the extra half."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{5}{2}$",
+          "correct": true,
+          "feedback": "Correct. $2\\frac{1}{2}=\\frac{5}{2}$."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{2}{5}$",
+          "correct": false,
+          "feedback": "Not quite. The denominator should stay as 2."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{4}{2}$",
+          "correct": false,
+          "feedback": "Not quite. This represents 2 wholes but misses the extra half."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Work out $2\\frac{1}{2}+1\\frac{1}{3}$.",
+      "options": [
+        {
+          "label": "A",
+          "text": "$3\\frac{5}{6}$",
+          "correct": true,
+          "feedback": "Correct. Convert to sixths, then add."
+        },
+        {
+          "label": "B",
+          "text": "$3\\frac{2}{5}$",
+          "correct": false,
+          "feedback": "Not quite. The denominators should not be added."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{9}{5}$",
+          "correct": false,
+          "feedback": "Not quite. The fractions need a common denominator before adding."
+        },
+        {
+          "label": "D",
+          "text": "$4\\frac{1}{6}$",
+          "correct": false,
+          "feedback": "Not quite. Check the whole number part after adding the fractions."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Work out $4\\frac{2}{3}-1\\frac{1}{4}$.",
+      "options": [
+        {
+          "label": "A",
+          "text": "$3\\frac{1}{1}$",
+          "correct": false,
+          "feedback": "Not quite. The denominators should not be subtracted."
+        },
+        {
+          "label": "B",
+          "text": "$3\\frac{5}{12}$",
+          "correct": true,
+          "feedback": "Correct. $\\frac{14}{3}-\\frac{5}{4}=\\frac{41}{12}=3\\frac{5}{12}$."
+        },
+        {
+          "label": "C",
+          "text": "$2\\frac{5}{12}$",
+          "correct": false,
+          "feedback": "Not quite. The subtraction of the improper fractions gives more than 3."
+        },
+        {
+          "label": "D",
+          "text": "$3\\frac{1}{12}$",
+          "correct": false,
+          "feedback": "Not quite. Convert both mixed numbers before subtracting."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Which is the correct first step for $3\\frac{3}{8}-1\\frac{7}{10}$?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{27}{8}-\\frac{17}{10}$",
+          "correct": true,
+          "feedback": "Correct. Both mixed numbers have been converted to improper fractions."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{6}{8}-\\frac{8}{10}$",
+          "correct": false,
+          "feedback": "Not quite. The whole numbers must be included when converting."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{33}{8}-\\frac{17}{10}$",
+          "correct": false,
+          "feedback": "Not quite. $3\\frac{3}{8}$ is $\\frac{27}{8}$, not $\\frac{33}{8}$."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{3}{8}-\\frac{7}{10}$",
+          "correct": false,
+          "feedback": "Not quite. This ignores the whole number parts."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Complete the equivalent fractions: $2\\frac{3}{4}-1\\frac{1}{6}=\\frac{11}{4}-\\frac{7}{6}=\\frac{?}{12}-\\frac{?}{12}$.",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\frac{22}{12}-\\frac{14}{12}$",
+          "correct": false,
+          "feedback": "Not quite. $\\frac{11}{4}$ must be multiplied by 3 to make twelfths."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{33}{12}-\\frac{14}{12}$",
+          "correct": true,
+          "feedback": "Correct. Fourths multiply by 3 and sixths multiply by 2."
+        },
+        {
+          "label": "C",
+          "text": "$\\frac{33}{12}-\\frac{7}{12}$",
+          "correct": false,
+          "feedback": "Not quite. The numerator 7 must also be multiplied by 2."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{11}{12}-\\frac{7}{12}$",
+          "correct": false,
+          "feedback": "Not quite. Equivalent fractions need the numerator changed too."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Work out $\\frac{11}{3}-1\\frac{3}{4}$.",
+      "options": [
+        {
+          "label": "A",
+          "text": "$1\\frac{11}{12}$",
+          "correct": true,
+          "feedback": "Correct. $\\frac{44}{12}-\\frac{21}{12}=\\frac{23}{12}$."
+        },
+        {
+          "label": "B",
+          "text": "$\\frac{8}{1}$",
+          "correct": false,
+          "feedback": "Not quite. The denominators should not be subtracted."
+        },
+        {
+          "label": "C",
+          "text": "$2\\frac{1}{12}$",
+          "correct": false,
+          "feedback": "Not quite. Check the subtraction after changing to twelfths."
+        },
+        {
+          "label": "D",
+          "text": "$\\frac{8}{7}$",
+          "correct": false,
+          "feedback": "Not quite. The fractions need a common denominator before subtracting."
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "Ms Fisher wants to cycle $18$ km in 3 days. She cycles $4\\frac{1}{5}$ km on Monday and $7\\frac{2}{3}$ km on Tuesday. How far does she need to cycle on Wednesday?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$6\\frac{2}{15}$ km",
+          "correct": true,
+          "feedback": "Correct. Subtract the Monday and Tuesday total from 18 km."
+        },
+        {
+          "label": "B",
+          "text": "$11\\frac{13}{15}$ km",
+          "correct": false,
+          "feedback": "Not quite. This is the distance already cycled, not the distance left."
+        },
+        {
+          "label": "C",
+          "text": "$7\\frac{2}{15}$ km",
+          "correct": false,
+          "feedback": "Not quite. Check the subtraction from 18 carefully."
+        },
+        {
+          "label": "D",
+          "text": "$5\\frac{13}{15}$ km",
+          "correct": false,
+          "feedback": "Not quite. The total already cycled is more than 11 km."
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Nijah has $25$ inches of ribbon. She cuts enough ribbon to go exactly around the rectangular base shown. How much ribbon is left?",
+      "diagram": {
+        "type": "svg",
+        "content": "<svg viewBox='0 0 360 230' xmlns='http://www.w3.org/2000/svg'><rect x='75' y='55' width='210' height='110' fill='#eef7fb' stroke='#17202a' stroke-width='4'/><text x='180' y='205' text-anchor='middle' font-size='24' font-family='Arial'>7 1/4 inches</text><text x='42' y='115' text-anchor='middle' font-size='24' font-family='Arial' transform='rotate(-90 42 115)'>4 1/3 inches</text></svg>"
+      },
+      "options": [
+        {
+          "label": "A",
+          "text": "$13\\frac{7}{12}$ inches",
+          "correct": false,
+          "feedback": "Not quite. This adds one length and one width but does not find the perimeter."
+        },
+        {
+          "label": "B",
+          "text": "$1\\frac{5}{6}$ inches",
+          "correct": true,
+          "feedback": "Correct. The perimeter is $23\\frac{1}{6}$ inches, so $1\\frac{5}{6}$ inches remain."
+        },
+        {
+          "label": "C",
+          "text": "$2\\frac{1}{6}$ inches",
+          "correct": false,
+          "feedback": "Not quite. Check the subtraction from 25 inches."
+        },
+        {
+          "label": "D",
+          "text": "$23\\frac{1}{6}$ inches",
+          "correct": false,
+          "feedback": "Not quite. This is the ribbon used, not the ribbon left."
+        }
+      ]
+    }
+  ]
+}
