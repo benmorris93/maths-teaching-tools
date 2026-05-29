@@ -430,3 +430,21 @@ select, .refresh-btn { width: 100%; border: 2px solid var(--border); border-radi
   background: var(--button-hover);
   transform: translateY(-2px);
 }
+.results-diagram {
+  margin: 0 0 16px;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  background: #fbfdff;
+  padding: 12px;
+  max-width: 260px;
+}
+
+.results-diagram-inner {
+  width: 100%;
+}
+
+.results-diagram-inner svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
