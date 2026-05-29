@@ -193,34 +193,34 @@
 ]
 },
 {
-"id": "q7",
-"question": "Ron says, \"A diameter is also a chord.\" Is Ron correct?",
-"options": [
-{
-"label": "A",
-"text": "Yes, because it joins two points on the circumference.",
-"correct": true,
-"feedback": "Correct. A diameter is a special chord that passes through the centre."
-},
-{
-"label": "B",
-"text": "Yes, because it only touches the circle once.",
-"correct": false,
-"feedback": "Not quite. A line that touches the circle once is a tangent."
-},
-{
-"label": "C",
-"text": "No, because a chord must not pass through the centre.",
-"correct": false,
-"feedback": "Not quite. A chord can pass through the centre."
-},
-{
-"label": "D",
-"text": "No, because a diameter is curved.",
-"correct": false,
-"feedback": "Not quite. A diameter is a straight line segment."
-}
-]
+  "id": "q7",
+  "question": "Ron says that a diameter is also a chord. Is Ron correct?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Yes, because it joins two points on the circumference.",
+      "correct": true,
+      "feedback": "Correct. A diameter is a special chord that passes through the centre."
+    },
+    {
+      "label": "B",
+      "text": "Yes, because it only touches the circle once.",
+      "correct": false,
+      "feedback": "Not quite. A line that touches the circle once is a tangent."
+    },
+    {
+      "label": "C",
+      "text": "No, because a chord must not pass through the centre.",
+      "correct": false,
+      "feedback": "Not quite. A chord can pass through the centre."
+    },
+    {
+      "label": "D",
+      "text": "No, because a diameter is curved.",
+      "correct": false,
+      "feedback": "Not quite. A diameter is a straight line segment."
+    }
+  ]
 },
 {
 "id": "q8",
