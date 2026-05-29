@@ -406,3 +406,27 @@ select, .refresh-btn { width: 100%; border: 2px solid var(--border); border-radi
   .count { display: none; }
   .results-link { float: none; }
 }
+.top-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.nav-button {
+  display: inline-block;
+  border: 0;
+  border-radius: 18px;
+  background: #e8f4f8;
+  color: var(--accent);
+  padding: 14px 20px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.nav-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
