@@ -42,6 +42,10 @@
       {
         "title": "Area and Perimeter",
         "file": "data/area-and-perimeter.json"
+      },
+      {
+        "title": "Circle Vocabulary",
+        "file": "circle-vocabulary.json"
       }
     ]
   },
