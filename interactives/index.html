@@ -1,66 +1,48 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Interactive Tools</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f3e8;
-      color: #222;
-      text-align: center;
-      padding: 50px;
-    }
-
-    h1 {
-      font-size: 48px;
-    }
-
-    p {
-      font-size: 22px;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 15px;
-      padding: 18px 28px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 22px;
-    }
-
-    .button:hover {
-      background: #555;
-    }
-
-    .back {
-      background: #777;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f5ef">
+<meta name="description" content="Interactive maths tools for graphs, trigonometry and mental arithmetic. Explore the unit circle, adjust a straight-line graph, or practise with Number Pop.">
+<title>Interactive Tools · Maths Interactives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f5ef;--ink:#292336;--muted:#746c7e;--purple:#7450df;--line:#e2ddd6}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}a:focus-visible{outline:3px solid var(--purple);outline-offset:6px;border-radius:6px}svg{display:block}::selection{background:#e1d2fa}.wrap{max-width:1240px;margin:auto;padding:0 40px}.skip{position:absolute;top:-80px;left:15px;background:white;padding:12px;z-index:5}.skip:focus{top:12px}.header{height:108px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;gap:11px;align-items:center;font-family:'Space Grotesk',Arial,sans-serif;font-size:21px;line-height:1.1;font-weight:600;letter-spacing:-.9px;text-decoration:none}.brand-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:var(--purple);flex-shrink:0}.brand-icon svg{width:29px;height:29px;stroke:#fff;stroke-width:2.4}.brand>span:last-child span{display:block;font-size:11px;font-weight:500;letter-spacing:3.1px;margin-top:4px}.nav{display:flex;align-items:center;gap:28px;font-size:12px;font-weight:600}.nav a{text-decoration:none;white-space:nowrap;padding:11px 0}.nav a:hover{color:var(--purple)}.nav a[aria-current]{color:#6542c5;position:relative}.nav a[aria-current]:after{content:'';height:3px;border-radius:3px;background:#aa8be7;position:absolute;bottom:0;left:0;right:0}.breadcrumb{display:flex;gap:9px;align-items:center;padding-top:25px;font-size:10px;color:#938a9b}.breadcrumb a{text-decoration:none;color:#746b80}.breadcrumb a:hover{color:var(--purple)}.intro{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:36px 0 42px}.eyebrow{display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:1.8px;font-weight:700}.eyebrow i{width:7px;height:7px;border-radius:50%;background:#88aa8c}h1{font-family:'Space Grotesk',Arial,sans-serif;font-size:60px;line-height:1.08;letter-spacing:-3px;margin:16px 0 17px;font-weight:600}h1 span{color:var(--purple)}.intro p{color:var(--muted);font-size:14px;line-height:1.8;margin:0;max-width:540px}.intro-art{width:235px;height:150px;flex-shrink:0}.list-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.list-heading h2{font-size:11px;letter-spacing:.3px;font-weight:600;margin:0}.list-heading>span{font-size:9px;color:#8d8497;letter-spacing:1px}.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.tool{display:flex;flex-direction:column;text-decoration:none;background:#fff;border:1px solid #e2dce7;border-radius:21px;overflow:hidden;box-shadow:0 4px 0 #e9e3dc55;transition:transform .2s,box-shadow .2s,border-color .2s}.tool:hover{transform:translateY(-6px);box-shadow:0 13px 24px #44365310;border-color:#baa5de}.art{height:205px;position:relative;padding:24px 20px;display:flex;align-items:center;justify-content:center;overflow:hidden}.art>svg{width:100%;height:100%;overflow:visible;transition:transform .25s}.tool:hover .art>svg{transform:scale(1.035)}.circle-art{background:#deebdf}.graph-art{background:#e6dcf7}.pop-art{background:#fae2cf}.tool-number{position:absolute;left:19px;top:16px;font-family:'Space Grotesk',Arial,sans-serif;font-size:10px;letter-spacing:1px;color:#5d6d5c}.graph-art .tool-number{color:#7a6696}.pop-art .tool-number{color:#a17b5c}.tool-body{padding:24px;display:flex;flex-direction:column;flex:1}.topic{font-size:8px;letter-spacing:1.2px;font-weight:700;display:inline-flex;align-self:start;border:1px solid #c5d9c8;color:#55705b;border-radius:20px;padding:6px 9px;background:#f0f6f0}.graph .topic{background:#f4effc;color:#7856ac;border-color:#dacbed}.pop .topic{background:#fcf1e8;color:#956b45;border-color:#efd7c3}.tool h3{font-family:'Space Grotesk',Arial,sans-serif;font-size:27px;letter-spacing:-1.1px;line-height:1.2;font-weight:600;margin:16px 0 11px}.tool p{font-size:12px;line-height:1.75;color:var(--muted);margin:0 0 19px;min-height:64px}.details{display:flex;gap:6px;flex-wrap:wrap;margin:auto 0 23px}.details span{font-size:9px;color:#8a8194;padding:5px 7px;border-radius:5px;background:#f6f4f8}.card-bottom{border-top:1px solid #eee9f0;padding-top:17px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600}.card-bottom b{width:29px;height:29px;display:grid;place-items:center;background:#f0e9fc;color:#7952cd;border-radius:50%;font-size:19px;font-weight:400;transition:background .2s,color .2s}.tool:hover .card-bottom b{background:var(--purple);color:#fff}.quiz-link{margin:31px 0 40px;border:1px solid #ddd6e5;border-radius:15px;display:flex;align-items:center;justify-content:space-between;gap:25px;padding:23px 26px;background:#f0ecef;text-decoration:none;transition:background .2s}.quiz-link:hover{background:#e9e0f3}.quiz-left{display:flex;gap:17px;align-items:center}.quiz-icon{width:38px;height:38px;flex-shrink:0;background:#e1d4f4;color:var(--purple);border-radius:11px;display:grid;place-items:center;font-size:23px}.quiz-link h2{font-family:'Space Grotesk',Arial,sans-serif;font-size:17px;letter-spacing:-.4px;margin:0 0 5px;font-weight:600}.quiz-link p{font-size:11px;color:var(--muted);line-height:1.6;margin:0}.quiz-cta{white-space:nowrap;font-size:11px;font-weight:600}.quiz-cta span{font-size:18px;margin-left:13px;color:var(--purple)}footer{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:24px 0 30px;color:#8b8294;font-size:10px}footer a{text-decoration:none}footer a:hover{color:var(--purple)}footer>span{font-size:8px;letter-spacing:1.3px;display:flex;align-items:center;gap:10px}footer b{font-size:18px;color:var(--purple);font-weight:400}@media(min-width:1450px){.intro{padding-top:49px;padding-bottom:49px}.art{height:220px}.tool-body{padding:27px}.tool p{font-size:13px}}@media(max-width:1000px){.wrap{padding:0 26px}.tools{gap:15px}.tool-body{padding:20px}.tool h3{font-size:24px}.tool p{font-size:11px;min-height:77px}.art{height:185px;padding:26px 14px}.intro-art{width:180px}.intro h1{font-size:51px}.intro p{font-size:13px;max-width:420px}.nav{gap:20px}.details{gap:4px}.details span{font-size:8px;padding:5px}}@media(max-width:760px){.wrap{padding:0 22px}.header{height:95px}.brand{font-size:18px}.brand-icon{width:37px;height:37px}.brand>span:last-child span{font-size:9px}.nav{font-size:10px;gap:17px}.intro{padding:30px 0 33px}.intro h1{font-size:47px}.intro p{font-size:12px;max-width:360px}.intro-art{width:140px;height:130px}.tools{grid-template-columns:1fr}.tool{display:grid;grid-template-columns:38% 1fr;min-height:270px}.art{height:100%;min-height:270px;padding:32px 15px}.tool-body{padding:23px}.tool h3{font-size:27px;margin:12px 0 9px}.tool p{font-size:12px;min-height:0;margin-bottom:16px}.details{margin-bottom:17px}.details span{font-size:9px;padding:5px 7px}.card-bottom{padding-top:13px}.quiz-link{padding:21px}.quiz-link h2{font-size:16px}.quiz-cta{font-size:10px}.quiz-cta span{margin-left:6px}.quiz-link p{max-width:260px}.tool-number{left:15px}.list-heading>span{font-size:8px}}@media(max-width:520px){.wrap{padding:0 20px}.header{height:auto;min-height:100px;flex-wrap:wrap;gap:17px;padding:20px 0}.brand{font-size:19px}.nav{gap:17px;font-size:11px;margin-left:auto}.nav a{padding:5px 0}.nav .nav-home{display:none}.breadcrumb{padding-top:20px}.intro{position:relative;padding-top:29px;padding-bottom:30px}.intro h1{font-size:44px;letter-spacing:-2.3px;margin-top:15px}.intro-art{display:none}.intro p{font-size:12px;max-width:330px}.tool{display:flex;min-height:0}.art{height:185px;min-height:0;padding:24px}.art>svg{max-width:270px}.tool-body{padding:23px}.tool p{font-size:12px;max-width:300px}.details{margin-top:0;margin-bottom:19px}.tools{gap:22px}.quiz-link{align-items:start;padding:22px;flex-direction:column;gap:19px}.quiz-cta{padding-left:55px;font-size:11px}.quiz-link p{max-width:230px}footer{align-items:start;flex-direction:column;gap:13px;font-size:9px}footer>span{font-size:7px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
-
-  <h1>Interactive Tools</h1>
-  <p>Choose an interactive tool:</p>
-
-  <a class="button" href="unit_circle_interactive_v2.html">
-    Unit Circle
-  </a>
-
-  <a class="button" href="linear_graph_explorer.html">
-    y = mx + c Explorer
-  </a>
-
-  <a class="button" href="number-pop.html">
-    Number Pop — Mental Maths Challenge
-  </a>
-
-  <br>
-
-  <a class="button back" href="../">
-    Back to Home
-  </a>
-
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="header">
+<a class="brand" href="../" aria-label="Maths Interactives home"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M5.4 26.6L26.6 5.4"/></svg></span><span>maths<span>INTERACTIVES</span></span></a>
+<nav class="nav" aria-label="Main navigation"><a class="nav-home" href="../">Home</a><a href="./" aria-current="page">Interactive Tools</a><a href="../diagnostic-quizzes/">Diagnostic Quizzes</a></nav>
+</header>
+<main id="main">
+<div class="breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span>Interactive Tools</span></div>
+<section class="intro" aria-labelledby="title"><div><div class="eyebrow"><i aria-hidden="true"></i> MATHS INTERACTIVES</div><h1 id="title">Interactive <span>tools.</span></h1><p>Explore graphs and trigonometry with adjustable diagrams, or practise your mental arithmetic.</p></div>
+<svg class="intro-art" viewBox="0 0 235 150" fill="none" aria-hidden="true"><g transform="translate(10 25) rotate(-12 45 45)"><rect width="88" height="88" rx="22" fill="#d8c5f4"/><path d="M44 21v46M21 44h46" stroke="#7851b8" stroke-width="6" stroke-linecap="round"/></g><g transform="translate(119 17) rotate(16 45 45)"><rect width="84" height="84" rx="42" fill="#a9cdb3"/><path d="M25 31h34M25 53h34" stroke="#426e51" stroke-width="6" stroke-linecap="round"/></g><path d="M103 102l7 13 13-6-5 14 13 6-14 5 5 14-13-7-8 13-4-14-15 4 7-13-12-7 15-3-3-15 12 9z" fill="#efb554"/><path d="M215 99v18m-9-9h18M100 8v12m-6-6h12" stroke="#b499d9" stroke-width="2" stroke-linecap="round"/></svg>
+</section>
+<section aria-labelledby="tools-label"><div class="list-heading"><h2 id="tools-label">Choose a tool</h2><span>GRAPHS · TRIGONOMETRY · ARITHMETIC</span></div>
+<div class="tools">
+<a class="tool circle" href="unit_circle_interactive_v2.html" aria-labelledby="circle-title">
+<div class="art circle-art"><span class="tool-number" aria-hidden="true">01 /</span><svg viewBox="0 0 280 165" fill="none" aria-hidden="true"><circle cx="137" cy="82" r="69" fill="#c2dbc7"/><path d="M36 82h202M137 8v148" stroke="#789e80" stroke-width="1.4"/><circle cx="137" cy="82" r="57" stroke="#487257" stroke-width="2"/><path d="M137 82l43-37v37z" fill="#6e9e77" fill-opacity=".24"/><path d="M137 82l43-37" stroke="#416c4e" stroke-width="3" stroke-linecap="round"/><path d="M180 45v37" stroke="#7450c4" stroke-width="4" stroke-linecap="round"/><path d="M137 82h43" stroke="#c78638" stroke-width="4" stroke-linecap="round"/><path d="M155 82a18 18 0 0 0-4-12" stroke="#416c4e" stroke-width="1.5"/><circle cx="180" cy="45" r="5" fill="#416c4e" stroke="#deebdf" stroke-width="2"/><text x="159" y="74" font-family="Georgia,serif" font-size="13" fill="#416c4e">θ</text><text x="188" y="65" font-family="'DM Sans',sans-serif" font-size="10" fill="#7450c4">sin θ</text><text x="145" y="98" font-family="'DM Sans',sans-serif" font-size="10" fill="#916328">cos θ</text><path d="M53 27v14m-7-7h14" stroke="#99b59c" stroke-width="2"/><circle cx="226" cy="132" r="4" fill="#9dbda4"/></svg></div>
+<div class="tool-body"><span class="topic">TRIGONOMETRY</span><h3 id="circle-title">Unit Circle</h3><p>Adjust the angle to see how sine and cosine relate to a point on the unit circle.</p><div class="details"><span>Sine &amp; cosine</span><span>Angle slider</span><span>Animation</span></div><div class="card-bottom">Open tool <b aria-hidden="true">↗</b></div></div>
+</a>
+<a class="tool graph" href="linear_graph_explorer.html" aria-labelledby="graph-title">
+<div class="art graph-art"><span class="tool-number" aria-hidden="true">02 /</span><svg viewBox="0 0 280 165" fill="none" aria-hidden="true"><rect x="53" y="9" width="177" height="145" rx="16" fill="#d5c4ef"/><g stroke="#b49bda" stroke-width=".8" opacity=".6"><path d="M64 35h155M64 60h155M64 85h155M64 110h155M64 135h155M91 20v123M116 20v123M141 20v123M166 20v123M191 20v123"/></g><path d="M66 115h151M91 143V21" stroke="#8b6ab4" stroke-width="1.5"/><path d="M72 130l121-103" stroke="#7450bd" stroke-width="4" stroke-linecap="round"/><circle cx="91" cy="114" r="4" fill="#fbf7ff" stroke="#7450bd" stroke-width="2"/><circle cx="146" cy="67" r="5" fill="#7450bd" stroke="#e6dcf7" stroke-width="2"/><rect x="160" y="116" width="83" height="27" rx="13.5" fill="#f6f0ff"/><text x="201" y="134" text-anchor="middle" fill="#75519f" font-size="13" font-family="'Space Grotesk',sans-serif">y = mx + c</text><path d="M33 89v13m-6-6h13M246 35v13m-6-6h13" stroke="#ad92d1" stroke-width="2" stroke-linecap="round"/></svg></div>
+<div class="tool-body"><span class="topic">GRAPHS</span><h3 id="graph-title">y = mx + c Explorer</h3><p>Change the gradient and y-intercept to see how each affects a straight-line graph.</p><div class="details"><span>Gradient</span><span>y-intercept</span><span>Sliders</span></div><div class="card-bottom">Open tool <b aria-hidden="true">↗</b></div></div>
+</a>
+<a class="tool pop" href="number-pop.html" aria-labelledby="pop-title">
+<div class="art pop-art"><span class="tool-number" aria-hidden="true">03 /</span><svg viewBox="0 0 280 165" fill="none" aria-hidden="true"><g transform="translate(43 17) rotate(-10 47 47)"><rect width="93" height="93" rx="24" fill="#baa0e8"/><path d="M47 22v50M22 47h50M29 29l36 36M29 65l36-36" stroke="#6c43ae" stroke-width="4" stroke-linecap="round"/></g><circle cx="186" cy="62" r="41" fill="#edb85e"/><path d="M186 41v42M165 62h42" stroke="#9a6928" stroke-width="5" stroke-linecap="round"/><g transform="translate(87 104) rotate(-5 68 25)"><rect width="135" height="43" rx="21.5" fill="#ecad97"/><text x="67" y="29" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="23" font-weight="600" fill="#9b5742">12 × 8 = ?</text></g><path d="M238 112v14m-7-7h14M34 125v10m-5-5h10" stroke="#c89366" stroke-width="2" stroke-linecap="round"/></svg></div>
+<div class="tool-body"><span class="topic">MENTAL ARITHMETIC</span><h3 id="pop-title">Number Pop</h3><p>Practise the four operations in timed rounds, with adaptive difficulty and explanations.</p><div class="details"><span>30–120 seconds</span><span>Scores &amp; streaks</span></div><div class="card-bottom">Start a round <b aria-hidden="true">↗</b></div></div>
+</a>
+</div></section>
+<a class="quiz-link" href="../diagnostic-quizzes/"><div class="quiz-left"><span class="quiz-icon" aria-hidden="true">✓</span><div><h2>Diagnostic quizzes</h2><p>Check your understanding with questions organised by topic.</p></div></div><span class="quiz-cta">Browse quizzes <span aria-hidden="true">→</span></span></a>
+</main>
+<footer><a href="../">← Back to home</a><span>MATHS INTERACTIVES <b aria-hidden="true">✳</b></span></footer>
+</div>
 </body>
 </html>
