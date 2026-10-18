@@ -26,10 +26,20 @@
     .red { background: #fef2f2; color: #b91c1c; }
     .green { background: #f0fdf4; color: #15803d; }
     @media (max-width: 750px) { .controls, .summary { grid-template-columns: 1fr; } h1 { font-size: 32px; } .equation { font-size: 26px; } }
-  </style>
+  
+/* Shared site navigation, scoped to avoid affecting tool controls. */
+.tool-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:20px}
+.tool-navigation a{display:inline-flex;align-items:center;min-height:40px;padding:9px 14px;border:1px solid #d7c9ee;border-radius:10px;background:#f3edfC;color:#6542b8;text-decoration:none;font-family:inherit;font-size:12px;font-weight:600;line-height:1.4}
+.tool-navigation a:hover{background:#e8dcfa}
+.tool-navigation a:focus-visible{outline:3px solid #7450df;outline-offset:3px}
+.app>.tool-navigation{grid-column:1 / -1;margin-bottom:0}
+header>.tool-navigation{margin-bottom:0}
+@media(max-width:650px){header>.tool-navigation{order:3;width:100%}}
+</style>
 </head>
 <body>
   <main class="container">
+    <nav class="tool-navigation" aria-label="Site navigation"><a href="./">← Interactive Tools</a><a href="../">Home</a></nav>
     <h1>y = mx + c Explorer</h1>
     <p class="subtitle">Drag the sliders to explore how the gradient and y-intercept affect the graph.</p>
     <section class="controls">
