@@ -1,22 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz Results Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FBFAF6">
+  <title>Results dashboard · Maths Interactives</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../assets/brand.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
-    <section class="card">
-      <div class="top-links">
-        <a class="nav-button" href="./">← Quizzes</a>
-        <a class="nav-button" href="../">Home</a>
-      </div>
-      <h1 class="menu-title">Results Dashboard</h1>
-      <p class="menu-subtitle">Anonymous class summary by question.</p>
-
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+  <header class="site-header">
+    <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt=""><span>maths interactives</span></a>
+    <nav class="site-nav" aria-label="Main"><a href="../">Home</a><a href="../interactives/">Tools</a><a href="./">Quizzes</a></nav>
+  </header>
+  <main id="main" class="app">
+    <h1 class="page-title">Results dashboard</h1>
+    <p class="page-lede">Anonymous class summary, question by question.</p>
+    <section class="card results-card">
       <div class="controls">
         <div class="control-group">
           <label for="quiz-select">Quiz</label>
@@ -33,11 +37,11 @@
         </div>
         <button class="refresh-btn" id="refresh-btn">Refresh</button>
       </div>
-
       <div class="results-summary" id="results-summary"></div>
       <div id="results-output"></div>
     </section>
   </main>
+</div>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
   <script type="module" src="results.js"></script>

@@ -7,94 +7,29 @@
   <meta name="description" content="Interactive maths tools and diagnostic quizzes for learning and teaching maths.">
   <title>Maths Interactives</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/brand.css">
   <style>
-    :root{
-      --paper:#FBFAF6; --grid:#E8ECF3; --ink:#1B2A4A; --ink-soft:#4F5D7A; --red:#D6453D;
-      --rule:#D5DCE8; --card:#FFFFFF;
-      --margin:72px; --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.6;
-      background-color:var(--paper);
-      background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-      background-size:24px 24px;
-      -webkit-font-smoothing:antialiased;
-    }
-    /* The red margin line of an exercise book */
-    body::before{content:"";position:fixed;top:0;bottom:0;left:var(--margin);width:2px;background:var(--red);opacity:.55;pointer-events:none}
-    a{color:inherit}
-    a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
-    .skip{position:absolute;left:-999px;top:8px;background:var(--card);padding:8px 12px}.skip:focus{left:calc(var(--margin) + 16px)}
-    .page{max-width:1080px;padding:0 32px 0 calc(var(--margin) + 32px)}
-
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:28px 0}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .brand img{width:40px;height:40px}
-    .brand span{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:-.4px;white-space:nowrap;line-height:1}
-    nav{display:flex;gap:24px;font-weight:500;font-size:15px}
-    nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
-    nav a:hover{border-color:var(--red)}
-
     .intro{padding:56px 0 48px;max-width:640px}
     h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-1.5px;margin:0 0 20px}
     h1 .tick{color:var(--red)}
     .intro p{font-size:18px;color:var(--ink-soft);margin:0;max-width:480px}
-
     section{padding:24px 0 40px}
-    .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:20px}
-    h2{font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:-.5px;margin:0}
-    .section-head a{font-size:14px;font-weight:500;color:var(--ink-soft)}
-    .section-head a:hover{color:var(--red)}
-
-    .tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-    .tool{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--ink);border-radius:10px;text-decoration:none;overflow:hidden;transition:transform .15s,box-shadow .15s}
-    .tool:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
-    .tool svg{display:block;width:100%;height:auto;border-bottom:1.5px solid var(--ink);background:var(--paper)}
-    .tool div{padding:16px 18px 18px}
-    h3{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.3px;margin:0 0 4px}
-    .tool p{margin:0;font-size:15px;color:var(--ink-soft)}
-
     .topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 48px}
-    .topic h3{font-size:18px;margin:8px 0 4px;color:var(--ink-soft);font-family:var(--sans);font-weight:600;letter-spacing:0;text-transform:none}
+    .topic h3{font-size:18px;margin:8px 0 4px;color:var(--ink-soft);font-weight:600}
     .topic ol{list-style:none;margin:0;padding:0}
     .topic a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);text-decoration:none;font-weight:500}
     .topic a::after{content:"Start";flex-shrink:0;font-size:14px;color:var(--red);font-weight:600}
     .topic a:hover{color:var(--red)}
-
-    footer{display:flex;align-items:center;gap:10px;padding:32px 0 40px;margin-top:24px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-soft)}
-    footer img{width:22px;height:22px}
-
-    @media (max-width:860px){
-      .tools{grid-template-columns:1fr 1fr}
-      .topics{grid-template-columns:1fr}
-    }
-    @media (max-width:600px){
-      :root{--margin:20px}
-      .page{padding:0 16px 0 calc(var(--margin) + 16px)}
-      header{padding:20px 0}
-      .brand img{width:32px;height:32px}
-      .brand span{font-size:18px}
-      nav{gap:16px;font-size:14px}
-      .intro{padding:32px 0 28px}
-      .intro p{font-size:16px}
-      .tools{grid-template-columns:1fr}
-      .tool svg{height:120px}
-      h2{font-size:24px}
-    }
-    @media (max-width:340px){ .brand span{display:none} }
-    @media (prefers-reduced-motion:reduce){ .tool{transition:none} }
+    @media (max-width:860px){.topics{grid-template-columns:1fr}}
+    @media (max-width:600px){.intro{padding:32px 0 28px}.intro p{font-size:16px}}
   </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="page">
-  <header>
+  <header class="site-header">
     <a class="brand" href="./"><img src="assets/logo-mark.svg" alt=""><span>maths interactives</span></a>
-    <nav aria-label="Main"><a href="#tools">Tools</a><a href="#quizzes">Quizzes</a></nav>
+    <nav class="site-nav" aria-label="Main"><a href="./" aria-current="page">Home</a><a href="interactives/">Tools</a><a href="diagnostic-quizzes/">Quizzes</a></nav>
   </header>
 
   <main id="main">
@@ -145,7 +80,7 @@
     </section>
   </main>
 
-  <footer><img src="assets/logo-mark.svg" alt="">maths-interactives.co.uk</footer>
+  <footer class="site-footer"><img src="assets/logo-mark.svg" alt="">maths-interactives.co.uk</footer>
 </div>
 </body>
 </html>
