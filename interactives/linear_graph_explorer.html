@@ -16,7 +16,8 @@
     .icon-btn{width:40px;min-height:40px;padding:0;font-size:22px;line-height:1}
     .graph-tools .btn{min-height:40px}
     .tool-hint{margin-left:auto;font-size:13px;color:var(--ink-soft)}
-    #graph{display:block;width:100%;height:auto;border-radius:6px;background:#fff;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+    /* Square graph: as wide as the card, but never taller than the screen */
+    #graph{display:block;width:100%;max-width:calc(100vh - 110px);min-width:min(100%,320px);margin:0 auto;height:auto;border-radius:6px;background:#fff;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
     #graph.panning{cursor:grabbing}
     .side{display:flex;flex-direction:column;gap:14px;min-width:0}
 
@@ -76,7 +77,7 @@
           <button class="btn btn-secondary" id="resetView">Reset view</button>
           <span class="tool-hint">Drag the graph to move around</span>
         </div>
-        <svg id="graph" viewBox="0 0 700 490" role="img" aria-label="Graph of y = x"></svg>
+        <svg id="graph" viewBox="0 0 700 700" role="img" aria-label="Graph of y = x"></svg>
       </section>
 
       <div class="side">
@@ -138,8 +139,9 @@
   const axisInputs = { xmin: $("xmin"), xmax: $("xmax"), ymin: $("ymin"), ymax: $("ymax") };
   const stepInputs = { x: $("xstep"), y: $("ystep") };
 
-  const W = 700, H = 490;
-  const DEFAULT_VIEW = { xmin: -10, xmax: 10, ymin: -7, ymax: 7 };
+  // Square, with equal x and y ranges, so the grid is made of squares
+  const W = 700, H = 700;
+  const DEFAULT_VIEW = { xmin: -10, xmax: 10, ymin: -10, ymax: 10 };
   const HELP = "Type an equation, e.g. 2x + 1 or x/2 − 3";
   let view = { ...DEFAULT_VIEW };
   let userStep = { x: null, y: null };
