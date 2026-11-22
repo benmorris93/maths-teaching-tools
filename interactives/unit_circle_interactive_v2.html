@@ -9,30 +9,36 @@
   <link rel="stylesheet" href="../assets/brand.css">
   <style>
     :root{--cos:var(--blue);--sin:var(--red);--angle:var(--gold);--muted:var(--ink-soft)}
-    .app{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:24px;align-items:start}
+    .app{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+    .col{display:flex;flex-direction:column;gap:14px;min-width:0}
     .visual-card{padding:12px;display:flex;flex-direction:column;gap:12px}
-    .canvas-wrap{width:100%;aspect-ratio:820/640;background:#fff;border-radius:6px;overflow:hidden}
-    svg{width:100%;height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none}
+    .canvas-wrap{width:100%;aspect-ratio:520/540;background:#fff;border-radius:6px;overflow:hidden}
+    svg{width:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none}
+    .canvas-wrap svg{height:100%}
     .controls{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:4px 6px}
-    .side{display:flex;flex-direction:column;gap:14px}
-    .angle-box{background:var(--ink);color:#fff;border-color:var(--ink);padding:18px 22px}
-    .angle-box .label{color:#C9D1DF}
-    .angle-value{font-family:var(--serif);font-weight:600;font-size:64px;line-height:1;letter-spacing:-1.5px;margin-top:4px;font-variant-numeric:tabular-nums}
-    .value-row{display:grid;grid-template-columns:6px 1fr;gap:14px;align-items:stretch;padding:12px 16px}
-    .swatch{border-radius:3px}.swatch.cos{background:var(--cos)}.swatch.sin{background:var(--sin)}
-    .formula{color:var(--ink-soft);font-size:14px}
-    .number{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
-    .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .angle-box{background:var(--ink);color:#fff;border-color:var(--ink);padding:16px 22px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+    .angle-box .label{color:#C9D1DF;font-size:15px}
+    .angle-value{font-family:var(--serif);font-weight:600;font-size:52px;line-height:1;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}
+    .trig-card{padding:14px 16px 10px;border-top:5px solid var(--c)}
+    .trig-card.cos{--c:var(--cos)}.trig-card.sin{--c:var(--sin)}
+    .trig-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+    .formula{color:var(--ink-soft);font-size:15px}
+    .formula strong{color:var(--c);font-weight:700}
+    .number{font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1;color:var(--c)}
+    .graph{cursor:ew-resize}
+    /* Laid out like the axes: QII QI on top, QIII QIV below */
+    .mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
     .mini{padding:8px 4px;text-align:center;font-size:13px;font-weight:600;color:var(--ink-soft);line-height:1.4}
     .mini.active{background:var(--ink);border-color:var(--ink);color:#fff}
-    .teaching-note{font-size:15px;color:var(--ink-soft);line-height:1.55;padding:14px 16px;border-left:3px solid var(--red);background:var(--card);border-radius:0}
+    .teaching-note{font-size:15px;color:var(--ink-soft);line-height:1.55;padding:14px 16px;border-left:3px solid var(--red);background:var(--card);margin:0}
     .quadrant{font-weight:700;color:var(--ink)}
     .label-text{font-weight:700;font-size:15px;font-family:var(--sans);paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linecap:round;stroke-linejoin:round}
     .axis-label{fill:var(--ink-soft);font-size:14px;font-weight:600;font-family:var(--sans)}
-    .graph-label{font-size:13px;font-weight:700;font-family:var(--sans)}
     .hint{font-size:12px;fill:var(--ink-soft);font-weight:500;font-family:var(--sans)}
-    @media (max-width:930px){.app{grid-template-columns:1fr}}
-    @media (max-width:480px){.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}.angle-value{font-size:52px}}
+    .marker-label{font-size:12px;font-weight:700;font-family:var(--sans);fill:#A06C08}
+    /* One column: circle, angle, cos, sin, then the quadrant signs and note */
+    @media (max-width:860px){.app{display:flex;flex-direction:column;gap:14px}.col{display:contents}.mini-grid{order:1}.teaching-note{order:2}}
+    @media (max-width:480px){.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}.angle-value{font-size:44px}.number{font-size:28px}}
   </style>
 </head>
 <body>
@@ -46,39 +52,47 @@
     <h1 class="page-title">Unit circle</h1>
     <p class="page-lede">Drag the point or use the slider. Angles start at the positive x-axis and go anticlockwise.</p>
     <div class="app">
-      <section class="card visual-card">
-        <div class="canvas-wrap">
-        <svg id="svg" viewBox="0 0 820 640" aria-label="Interactive unit circle and sine cosine graphs">
-          <defs>
-            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#4F5D7A"></path>
-            </marker>
-            <pattern id="smallGrid" width="35" height="35" patternUnits="userSpaceOnUse">
-              <path d="M 35 0 L 0 0 0 35" fill="none" stroke="#E8ECF3" stroke-width="1"/>
-            </pattern>
-          </defs>
-          <rect width="820" height="640" fill="url(#smallGrid)"></rect>
-          <g id="diagram"></g>
-        </svg>
-      </div>
-        <div class="controls">
-          <input id="slider" type="range" min="0" max="360" step="1" value="40" aria-label="Angle in degrees">
-          <button id="animate" class="btn">Animate</button>
-          <button id="reset" class="btn btn-secondary">Reset</button>
-        </div>
-      </section>
-      <aside class="side">
-        <div class="card angle-box"><div class="label">Angle θ</div><div class="angle-value"><span id="angleText">40</span>°</div></div>
-        <div class="panel value-row"><div class="swatch cos"></div><div><div class="formula">cos θ = x-coordinate</div><div class="number" id="cosText">0.766</div></div></div>
-        <div class="panel value-row"><div class="swatch sin"></div><div><div class="formula">sin θ = y-coordinate</div><div class="number" id="sinText">0.643</div></div></div>
+      <div class="col">
+        <section class="card visual-card">
+          <div class="canvas-wrap">
+            <svg id="svg" viewBox="0 0 520 540" aria-label="Interactive unit circle">
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#4F5D7A"></path>
+                </marker>
+                <pattern id="smallGrid" width="35" height="35" patternUnits="userSpaceOnUse">
+                  <path d="M 35 0 L 0 0 0 35" fill="none" stroke="#E8ECF3" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="520" height="540" fill="url(#smallGrid)"></rect>
+              <g id="diagram"></g>
+            </svg>
+          </div>
+          <div class="controls">
+            <input id="slider" type="range" min="0" max="360" step="1" value="40" aria-label="Angle in degrees">
+            <button id="animate" class="btn">Animate</button>
+            <button id="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </section>
         <div class="mini-grid" aria-label="Quadrant signs (cos, sin)">
-          <div class="panel mini" id="q1">QI<br>+, +</div>
           <div class="panel mini" id="q2">QII<br>−, +</div>
+          <div class="panel mini" id="q1">QI<br>+, +</div>
           <div class="panel mini" id="q3">QIII<br>−, −</div>
           <div class="panel mini" id="q4">QIV<br>+, −</div>
         </div>
-        <p class="teaching-note">At <strong>0°</strong> the point is <strong>(1, 0)</strong>. As θ increases, the x-coordinate traces <span style="color:var(--cos);font-weight:700">cos θ</span> and the y-coordinate traces <span style="color:var(--sin);font-weight:700">sin θ</span>. Current quadrant: <span class="quadrant" id="quadrantText">QI</span>.</p>
-      </aside>
+      </div>
+      <div class="col">
+        <div class="card angle-box"><div class="label">Angle θ</div><div class="angle-value"><span id="angleText">40</span>°</div></div>
+        <section class="panel trig-card cos">
+          <div class="trig-head"><div class="formula"><strong>cos θ</strong> = x-coordinate</div><div class="number" id="cosText">0.766</div></div>
+          <svg class="graph" id="cosGraph" viewBox="0 0 360 170" aria-label="Graph of y = cos θ from 0° to 360°"></svg>
+        </section>
+        <section class="panel trig-card sin">
+          <div class="trig-head"><div class="formula"><strong>sin θ</strong> = y-coordinate</div><div class="number" id="sinText">0.643</div></div>
+          <svg class="graph" id="sinGraph" viewBox="0 0 360 170" aria-label="Graph of y = sin θ from 0° to 360°"></svg>
+        </section>
+        <p class="teaching-note">At <strong>0°</strong> the point is <strong>(1, 0)</strong>. As θ increases, the x-coordinate traces <span style="color:var(--cos);font-weight:700">cos θ</span> and the y-coordinate traces <span style="color:var(--sin);font-weight:700">sin θ</span>. Drag along either graph to change the angle. Current quadrant: <span class="quadrant" id="quadrantText">QI</span>.</p>
+      </div>
     </div>
   </main>
 </div>
@@ -94,13 +108,15 @@
     const quadrantText = document.getElementById('quadrantText');
     const qs = [q1, q2, q3, q4];
 
-    const cx = 255;
-    const cy = 315;
+    const cosGraph = document.getElementById('cosGraph');
+    const sinGraph = document.getElementById('sinGraph');
+
+    const cx = 260;
+    const cy = 275;
     const r = 190;
-    const graphX = 520;
-    const graphY = 315;
-    const graphW = 245;
-    const graphH = 150;
+    // Each graph is 170 units tall. Its width follows the space available (wider = shorter graph).
+    const gx0 = 40, gy = 82, amp = 60;
+    let gx1 = 345;
     let angle = 40;
     let dragging = false;
     let animating = false;
@@ -152,10 +168,7 @@
     }
 
     function graphPoint(deg, value) {
-      return {
-        x: graphX + graphW * (deg / 360),
-        y: graphY - value * (graphH / 2)
-      };
+      return { x: gx0 + (gx1 - gx0) * (deg / 360), y: gy - value * amp };
     }
 
     function graphPath(fn) {
@@ -180,23 +193,24 @@
       diagram.innerHTML = '';
 
       // Circle axes
-      el('line', { x1: 55, y1: cy, x2: 470, y2: cy, stroke: '#4F5D7A', 'stroke-width': 2, 'marker-end': 'url(#arrow)' });
-      el('line', { x1: cx, y1: 535, x2: cx, y2: 75, stroke: '#4F5D7A', 'stroke-width': 2, 'marker-end': 'url(#arrow)' });
-      el('text', { x: 478, y: cy + 5, class: 'axis-label' }).textContent = 'x';
-      el('text', { x: cx - 4, y: 64, class: 'axis-label' }).textContent = 'y';
+      el('line', { x1: 40, y1: cy, x2: cx + 215, y2: cy, stroke: '#4F5D7A', 'stroke-width': 2, 'marker-end': 'url(#arrow)' });
+      el('line', { x1: cx, y1: cy + 220, x2: cx, y2: cy - 240, stroke: '#4F5D7A', 'stroke-width': 2, 'marker-end': 'url(#arrow)' });
+      el('text', { x: cx + 223, y: cy + 5, class: 'axis-label' }).textContent = 'x';
+      el('text', { x: cx - 4, y: cy - 250, class: 'axis-label' }).textContent = 'y';
 
       // Unit circle
       el('circle', { cx, cy, r, fill: 'none', stroke: '#1B2A4A', 'stroke-width': 4 });
       el('circle', { cx, cy, r: 4, fill: '#1B2A4A' });
 
       // Marks and labels
-      const marks = [[0,'0°'],[90,'90°'],[180,'180°'],[270,'270°']];
-      for (const [d, label] of marks) {
+      // Each label sits just outside the circle, nudged off its axis line
+      const marks = [[0,'0°',10,20,'start'],[90,'90°',10,-10,'start'],[180,'180°',-10,20,'end'],[270,'270°',10,22,'start']];
+      for (const [d, label, dx, dy, anchor] of marks) {
         const p1 = pointOnCircle(d, r - 8);
         const p2 = pointOnCircle(d, r + 8);
-        const t = pointOnCircle(d, r + 31);
+        const t = pointOnCircle(d, r);
         el('line', { x1:p1.x, y1:p1.y, x2:p2.x, y2:p2.y, stroke:'#4F5D7A', 'stroke-width':2 });
-        el('text', { x:t.x - (d === 0 ? 2 : 14), y:t.y + 5, class:'axis-label' }).textContent = label;
+        el('text', { x:t.x + dx, y:t.y + dy, class:'axis-label', 'text-anchor': anchor }).textContent = label;
       }
 
       // Angle arc: starts at +x axis and sweeps anticlockwise
@@ -222,39 +236,20 @@
       // Labels and point
       el('text', { x: (cx + footX) / 2 - 25, y: cy + (sin >= 0 ? 33 : -18), fill: 'var(--cos)', class: 'label-text' }).textContent = 'cos θ';
       el('text', { x: footX + (cos >= 0 ? 15 : -66), y: (footY + y) / 2, fill: 'var(--sin)', class: 'label-text' }).textContent = 'sin θ';
-      el('text', { x: x + (cos >= 0 ? 16 : -125), y: y - 16, fill: '#1B2A4A', class: 'label-text' }).textContent = `(${cos.toFixed(2)}, ${sin.toFixed(2)})`;
+      // Coordinate label beside the point; if that would run off the edge, put it above or below instead
+      const coordText = `(${cos.toFixed(2)}, ${sin.toFixed(2)})`.replace(/-/g, '−');
+      const labelW = 120;
+      const besideX = cos >= 0 ? x + 16 : x - 16 - labelW;
+      const fits = besideX >= 6 && besideX + labelW <= 514;
+      el('text', fits
+        ? { x: besideX, y: y - 16, fill: '#1B2A4A', class: 'label-text' }
+        : { x, y: sin >= 0 ? y - 26 : y + 38, fill: '#1B2A4A', class: 'label-text', 'text-anchor': 'middle' }
+      ).textContent = coordText;
       el('circle', { cx: x, cy: y, r: 15, fill: '#FFFFFF', stroke: '#1B2A4A', 'stroke-width': 5, style: 'cursor: grab' });
       el('circle', { cx: x, cy: y, r: 5, fill: '#1B2A4A', style: 'pointer-events:none' });
 
-      // Graph panel
-      el('rect', { x: graphX - 18, y: graphY - graphH / 2 - 50, width: graphW + 36, height: graphH + 110, rx: 18, fill: 'rgba(255,255,255,0.92)', stroke: '#D5DCE8' });
-      el('text', { x: graphX - 4, y: graphY - graphH / 2 - 24, fill: '#1B2A4A', 'font-size': 18, 'font-weight': 900 }).textContent = 'Live trig graphs';
-      el('line', { x1: graphX, y1: graphY, x2: graphX + graphW, y2: graphY, stroke: '#4F5D7A', 'stroke-width': 1.6 });
-      el('line', { x1: graphX, y1: graphY - graphH / 2, x2: graphX, y2: graphY + graphH / 2, stroke: '#4F5D7A', 'stroke-width': 1.6 });
-      for (const d of [90, 180, 270, 360]) {
-        const gx = graphX + graphW * (d / 360);
-        el('line', { x1: gx, y1: graphY - graphH / 2, x2: gx, y2: graphY + graphH / 2, stroke: '#4F5D7A', 'stroke-width': 1, opacity: 0.22 });
-        el('text', { x: gx - 12, y: graphY + graphH / 2 + 20, class: 'hint' }).textContent = `${d}°`;
-      }
-      el('text', { x: graphX - 14, y: graphY - graphH / 2 + 5, class: 'hint' }).textContent = '1';
-      el('text', { x: graphX - 18, y: graphY + graphH / 2 + 5, class: 'hint' }).textContent = '−1';
-      el('path', { d: graphPath(Math.cos), fill: 'none', stroke: 'var(--cos)', 'stroke-width': 4, 'stroke-linecap': 'round' });
-      el('path', { d: graphPath(Math.sin), fill: 'none', stroke: 'var(--sin)', 'stroke-width': 4, 'stroke-linecap': 'round' });
-      el('text', { x: graphX + graphW - 40, y: graphY - graphH / 2 - 9, fill: 'var(--cos)', class: 'graph-label' }).textContent = 'cos θ';
-      el('text', { x: graphX + graphW - 38, y: graphY + 27, fill: 'var(--sin)', class: 'graph-label' }).textContent = 'sin θ';
-
-      // Current angle marker on graphs
-      const markerX = graphX + graphW * (angle / 360);
-      const sinP = graphPoint(angle, sin);
-      const cosP = graphPoint(angle, cos);
-      el('line', { x1: markerX, y1: graphY - graphH/2, x2: markerX, y2: graphY + graphH/2, stroke: 'var(--angle)', 'stroke-width': 3, 'stroke-dasharray': '5 6' });
-      el('circle', { cx: cosP.x, cy: cosP.y, r: 6, fill: 'var(--cos)', stroke: '#FFFFFF', 'stroke-width': 2 });
-      el('circle', { cx: sinP.x, cy: sinP.y, r: 6, fill: 'var(--sin)', stroke: '#FFFFFF', 'stroke-width': 2 });
-      el('text', { x: markerX - 16, y: graphY - graphH/2 - 9, fill: '#A06C08', 'font-size': 13, 'font-weight': 900 }).textContent = `${angle}°`;
-
-      // Projection helpers from unit circle to graph points
-      el('path', { d: `M ${x} ${y} C ${x + 80} ${y}, ${graphX - 55} ${sinP.y}, ${sinP.x} ${sinP.y}`, fill: 'none', stroke: 'var(--angle)', 'stroke-width': 2.5, 'stroke-dasharray': '6 7', opacity: 0.72 });
-      el('path', { d: `M ${footX} ${footY} C ${footX + 80} ${footY}, ${graphX - 55} ${cosP.y}, ${cosP.x} ${cosP.y}`, fill: 'none', stroke: 'var(--angle)', 'stroke-width': 2.5, 'stroke-dasharray': '6 7', opacity: 0.45 });
+      drawGraph(cosGraph, Math.cos, cos, 'var(--cos)', 'cos θ');
+      drawGraph(sinGraph, Math.sin, sin, 'var(--sin)', 'sin θ');
 
       angleText.textContent = angle;
       cosText.textContent = cos.toFixed(3).replace('-0.000', '0.000');
@@ -266,6 +261,64 @@
       if (q === 'QII') q2.classList.add('active');
       if (q === 'QIII') q3.classList.add('active');
       if (q === 'QIV') q4.classList.add('active');
+    }
+
+    function drawGraph(g, fn, value, colour, name) {
+      g.innerHTML = '';
+      const w = g.clientWidth > 440 ? 500 : 360;
+      g.setAttribute('viewBox', `0 0 ${w} 170`);
+      gx1 = w - 15;
+      const add = (n, attrs) => el(n, attrs, g);
+      for (const d of [90, 180, 270, 360]) {
+        const x = graphPoint(d, 0).x;
+        add('line', { x1: x, y1: gy - amp, x2: x, y2: gy + amp, stroke: '#E8ECF3', 'stroke-width': 1 });
+      }
+      for (const v of [1, -1]) {
+        const y = gy - v * amp;
+        add('line', { x1: gx0, y1: y, x2: gx1, y2: y, stroke: '#D5DCE8', 'stroke-width': 1, 'stroke-dasharray': '3 4' });
+        add('text', { x: gx0 - 8, y: y + 4, class: 'hint', 'text-anchor': 'end' }).textContent = v === 1 ? '1' : '−1';
+      }
+      add('line', { x1: gx0, y1: gy, x2: gx1 + 6, y2: gy, stroke: '#4F5D7A', 'stroke-width': 1.6 });
+      add('line', { x1: gx0, y1: gy - amp - 8, x2: gx0, y2: gy + amp + 8, stroke: '#4F5D7A', 'stroke-width': 1.6 });
+      add('text', { x: gx0 - 8, y: gy + 4, class: 'hint', 'text-anchor': 'end' }).textContent = '0';
+      for (const d of [90, 180, 270, 360]) {
+        add('text', { x: graphPoint(d, 0).x, y: gy + amp + 24, class: 'hint', 'text-anchor': 'middle' }).textContent = `${d}°`;
+      }
+      add('path', { d: graphPath(fn), fill: 'none', stroke: colour, 'stroke-width': 3.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+
+      // Current angle: vertical marker, then the point on the curve
+      const p = graphPoint(angle, value);
+      add('line', { x1: p.x, y1: gy - amp - 6, x2: p.x, y2: gy + amp + 6, stroke: 'var(--angle)', 'stroke-width': 2 });
+      add('line', { x1: gx0, y1: p.y, x2: p.x, y2: p.y, stroke: colour, 'stroke-width': 1.5, 'stroke-dasharray': '4 4', opacity: 0.6 });
+      add('circle', { cx: p.x, cy: p.y, r: 7, fill: colour, stroke: '#FFFFFF', 'stroke-width': 2.5 });
+      const lx = Math.min(Math.max(p.x, gx0 + 14), gx1 - 14);
+      add('text', { x: lx, y: gy - amp - 10, class: 'marker-label', 'text-anchor': 'middle' }).textContent = `${angle}°`;
+    }
+
+    function angleFromGraph(evt, g) {
+      const pt = g.createSVGPoint();
+      pt.x = evt.clientX; pt.y = evt.clientY;
+      const p = pt.matrixTransform(g.getScreenCTM().inverse());
+      return Math.min(360, Math.max(0, Math.round((p.x - gx0) / (gx1 - gx0) * 360)));
+    }
+
+    for (const g of [cosGraph, sinGraph]) {
+      let draggingGraph = false;
+      g.addEventListener('pointerdown', evt => {
+        draggingGraph = true;
+        stopAnimation();
+        g.setPointerCapture(evt.pointerId);
+        setAngle(angleFromGraph(evt, g));
+      });
+      g.addEventListener('pointermove', evt => { if (draggingGraph) setAngle(angleFromGraph(evt, g)); });
+      g.addEventListener('pointerup', () => { draggingGraph = false; });
+      g.addEventListener('pointercancel', () => { draggingGraph = false; });
+    }
+
+    function stopAnimation() {
+      animating = false;
+      animateBtn.textContent = 'Animate';
+      if (raf) cancelAnimationFrame(raf);
     }
 
     function setAngle(deg) {
@@ -282,7 +335,7 @@
     }
 
     slider.addEventListener('input', e => setAngle(Number(e.target.value)));
-    reset.addEventListener('click', () => { animating = false; animateBtn.textContent = 'Animate'; if (raf) cancelAnimationFrame(raf); setAngle(40); });
+    reset.addEventListener('click', () => { stopAnimation(); setAngle(40); });
     animateBtn.addEventListener('click', () => {
       animating = !animating;
       animateBtn.textContent = animating ? 'Pause' : 'Animate';
@@ -292,8 +345,7 @@
 
     svg.addEventListener('pointerdown', evt => {
       dragging = true;
-      animating = false;
-      animateBtn.textContent = 'Animate';
+      stopAnimation();
       svg.setPointerCapture(evt.pointerId);
       setAngle(angleFromPointer(evt));
     });
@@ -310,6 +362,7 @@
 
     svg.addEventListener('pointerleave', () => { dragging = false; });
 
+    window.addEventListener('resize', update);
     update();
   </script>
 </body>
