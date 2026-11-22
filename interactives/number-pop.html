@@ -1,22 +1,214 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f5ef"><meta name="description" content="Timed mental arithmetic practice with adaptive difficulty, scores, streaks and explanations."><title>Number Pop · Mental maths practice</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-:root{--ink:#272337;--purple:#7450df;--paper:#f7f5ef;--line:#e2dfd7}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #aa8bf9;outline-offset:4px}button{color:inherit}header{height:104px;max-width:1280px;margin:auto;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 12px}.brand{font-family:'Space Grotesk',sans-serif;font-size:29px;font-weight:700;letter-spacing:-1.5px;text-decoration:none;color:var(--ink);display:flex;align-items:center}.brand>span:not(.brand-icon):not(.brand-dot){font-weight:400}.brand-icon{display:grid;place-items:center;background:var(--purple);color:#fff;width:41px;height:41px;border-radius:12px;font-size:32px;margin-right:10px}.brand-dot{color:var(--purple)}.header-note{font-size:10px;letter-spacing:2px;font-weight:700}.header-note span{color:var(--purple);margin-left:16px;font-size:19px}.quiet{border:0;background:none;font-size:13px;font-weight:600;padding:8px 0}.quiet:hover{color:var(--purple)}main{max-width:1140px;margin:auto;padding:0 14px}.intro{display:flex;justify-content:space-between;align-items:center;padding:55px 12px 44px}.eyebrow{font-size:10px;letter-spacing:1.8px;font-weight:700;display:flex;gap:8px;align-items:center}.eyebrow>span{background:#87ad8a;width:7px;height:7px;border-radius:50%}h1{font-family:'Space Grotesk',sans-serif;font-size:54px;line-height:1.09;letter-spacing:-2.8px;font-weight:600;position:relative;margin:18px 0}h1>span{color:var(--purple)}h1 svg{position:absolute;width:51px;stroke:#e9a645;stroke-width:4;fill:none;right:-66px;top:1px}.intro p{font-size:14px;line-height:1.7;color:#797481;margin:0}.math-art{width:290px;height:228px;position:relative;margin-right:38px;transform:rotate(-8deg);font-family:'Space Grotesk',sans-serif}.math-art>div{display:grid;place-items:center;position:absolute;font-weight:500}.art-circle{width:130px;height:130px;background:#d9cafa;border-radius:50%;left:5px;top:8px;font-size:110px;color:#6947c1;transform:rotate(-9deg)}.art-square{width:112px;height:112px;background:#a5cbb3;border-radius:27px;right:8px;top:1px;transform:rotate(22deg);font-size:91px;color:#35634c}.art-star{clip-path:polygon(50% 0%,62% 24%,86% 12%,78% 39%,100% 50%,78% 62%,88% 88%,61% 78%,50% 100%,38% 77%,12% 88%,23% 62%,0% 50%,24% 38%,12% 12%,39% 23%);width:146px;height:146px;background:#f0b14f;bottom:0;left:50px;font-size:77px;color:#8e5b1c;transform:rotate(15deg)}.art-pill{width:118px;height:72px;background:#f4ad9b;right:0;bottom:16px;border-radius:40px;font-size:67px;color:#a94e3a;transform:rotate(-15deg)}.art-spark{position:absolute;right:-33px;top:99px;font-size:40px;color:var(--purple)}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px}.play-panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px 32px;min-height:505px;box-shadow:0 4px 0 #e9e6dd60}.panel-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid #f0edf3}.mini-label{font-size:10px;letter-spacing:1.5px;font-weight:700}.badge{font-size:8px;letter-spacing:1px;color:#508061;background:#eef6ef;border-radius:20px;padding:7px 9px;font-weight:700}h2{font-family:'Space Grotesk',sans-serif;font-size:29px;letter-spacing:-1px;margin:27px 0 7px}h2 span{color:var(--purple)}.muted{font-size:12px;line-height:1.6;color:#827d8c;margin:0}fieldset{border:0;padding:0;margin:27px 0 0}legend{padding:0;margin-bottom:12px;font-size:10px;color:#a39aaa;font-weight:600;letter-spacing:.6px}legend span{color:var(--ink);font-size:12px;letter-spacing:0;margin-left:10px}.operations{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.op{border:1px solid #e6e1ed;background:#fff;border-radius:11px;padding:10px 4px;font-size:10px;display:flex;align-items:center;justify-content:center;gap:8px}.op b{font-size:20px;font-family:'Space Grotesk',sans-serif}.op.active{background:#f1ebff;border-color:#bba5ef;color:#6542c7}.durations{display:flex;gap:9px}.durations button{flex:1;padding:13px 7px;border:1px solid #e6e1ed;border-radius:10px;background:#fff;font-size:14px;font-weight:700}.durations span{display:block;font-size:9px;font-weight:400;color:#8d8597;margin-top:5px}.durations .active{border-color:#9170df;background:#f8f5ff}.durations .active span{color:#7450ba}.start{background:var(--purple);color:#fff;border:0;border-radius:11px;padding:17px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;width:100%;margin-top:25px;transition:background .15s,transform .15s}.start:hover{background:#6340cc;transform:translateY(-1px)}.start span{font-size:19px}.start:disabled{opacity:.4;cursor:not-allowed}.setup-foot{display:flex;justify-content:space-between;font-size:9px;color:#8a8494;margin:15px 0 0}.best-card{background:#e8def9;border-radius:21px;padding:25px 25px 0;position:relative;overflow:hidden}.best-card .mini-label{display:flex;justify-content:space-between}.trophy{position:absolute;right:21px;top:64px;font-size:70px;color:#b9a0e8;transform:rotate(15deg)}.best-number{font-family:'Space Grotesk',sans-serif;font-size:62px;letter-spacing:-3px;margin-top:28px;line-height:1}h3{font-size:14px;margin:12px 0 7px}.best-card p{color:#78678d;font-size:11px;max-width:190px;line-height:1.6;min-height:34px}.best-bottom{border-top:1px solid #d7c9eb;margin-top:20px;padding:18px 0}.best-bottom span{display:block;font-size:8px;letter-spacing:1.2px;color:#84708e}.best-bottom b{font-size:12px;display:block;margin-top:6px}.how-card{padding:25px 7px}.how-card p{display:flex;gap:13px;margin:20px 0 0}.tip-icon{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex-shrink:0}.purple{background:#e8dff9;color:#7957c3}.orange{background:#f9e7cc;color:#b78136}.green{background:#dfece2;color:#557c60}.how-card strong{font-size:12px;display:block;margin-bottom:5px}.how-card small{font-size:10px;line-height:1.6;display:block;color:#8a8492;max-width:210px}footer{display:flex;justify-content:space-between;padding:30px 0;font-size:10px;color:#918a98}footer>span:last-child{font-size:8px;letter-spacing:1px}footer b{font-size:16px;color:var(--purple);margin-left:9px}.game-metrics{display:flex;justify-content:space-between;margin:27px 0 17px}.game-metrics span{display:block;font-size:9px;letter-spacing:1.4px;color:#8a8294}.game-metrics strong{font-family:'Space Grotesk',sans-serif;font-size:29px;display:block;margin-top:5px}.time-track{height:6px;background:#ece6f6;border-radius:10px;overflow:hidden}.time-track div{height:100%;background:var(--purple);width:100%;transition:width .1s}.question-meta{display:flex;justify-content:space-between;align-items:center;margin-top:18px}.question-meta>span{font-size:10px;letter-spacing:1px;color:var(--purple);font-weight:700}.question-meta .quiet{font-size:10px}.equation{text-align:center;font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;letter-spacing:-2px;margin:24px 0}#answerForm{display:flex;gap:12px;max-width:380px;margin:auto}#answer{width:60%;min-width:0;border:2px solid #c3afee;background:#fbf9ff;border-radius:12px;text-align:center;font-size:32px;padding:9px;color:var(--ink);outline:none}#answer:focus{border-color:var(--purple);box-shadow:0 0 0 3px #e6dcfa}#answerForm .start{margin:0;width:40%}.answer-tools{display:flex;justify-content:space-between;align-items:center;max-width:380px;margin:9px auto;color:#8c8395;font-size:10px}.answer-tools .quiet{font-size:11px}.feedback{font-size:12px;line-height:1.6;background:#f6f3fb;border-radius:10px;padding:12px 15px;margin-top:14px;min-height:62px}.feedback.good{background:#eaf5ed;color:#35634c}.feedback.miss{background:#fff0e6;color:#8c4f26}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0)}#results{text-align:center}.result-star{font-size:58px;display:block;color:#eeb44d;margin-top:15px}#results h2{margin-top:5px}.result-stats{display:flex;justify-content:space-around;margin:25px 0}.result-stats b{display:block;font-size:27px;font-family:'Space Grotesk',sans-serif}.result-stats span{font-size:10px;color:#867b90}.change{margin:10px 0}#review{text-align:left}#review h3{margin:20px 0 10px}.review-item{padding:14px;background:#f8f5fc;border-radius:10px;margin:8px 0;font-size:12px;line-height:1.6}.review-item p{color:#7f728d;margin:5px 0 0;font-size:11px}.history{background:white;border:1px solid var(--line);border-radius:20px;padding:25px;margin-top:25px}.history-heading{display:flex;justify-content:space-between;align-items:center}.history h2{margin:0 0 12px}.history-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;border-top:1px solid #eee8f4;padding:15px 0;font-size:12px}.history-row:first-child{margin-top:20px}.history-row span{color:#8c8195}[hidden]{display:none!important}@media(min-width:1450px){main{max-width:1180px}.intro{padding-top:68px;padding-bottom:54px}.play-panel{padding:30px 36px}}@media(max-width:850px){header{margin:0 20px}.header-note{display:none}.workspace{grid-template-columns:1fr 255px;gap:16px}.play-panel{padding:22px}.op{flex-direction:column;gap:0}.intro h1{font-size:43px}.math-art{transform:scale(.8) rotate(-8deg);margin-right:0}.setup-foot{gap:10px}}@media(max-width:650px){header{height:80px}.brand{font-size:25px}.intro{padding:34px 5px}.intro h1{font-size:40px}.intro h1 svg{display:none}.intro p{font-size:12px}.math-art{display:none}.workspace{grid-template-columns:1fr}.play-panel{padding:20px}.panel-top .mini-label{font-size:8px}.badge{font-size:7px}.setup-foot{font-size:8px}aside{display:grid;grid-template-columns:1fr}.best-card{padding:22px}.how-card{padding-bottom:5px}.best-bottom{padding-bottom:0}.best-number{font-size:48px;margin-top:22px}footer{gap:18px;line-height:1.8}.equation{font-size:52px}h2{font-size:26px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-.site-back{font-size:13px;font-weight:600;color:var(--purple);text-decoration:none}.site-back:hover{text-decoration:underline}@media(max-width:650px){header{flex-wrap:wrap;height:auto;min-height:90px;padding:14px 0;gap:12px}.site-back{order:3;width:100%;font-size:12px}}
-/* Shared site navigation, scoped to avoid affecting tool controls. */
-.tool-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:20px}
-.tool-navigation a{display:inline-flex;align-items:center;min-height:40px;padding:9px 14px;border:1px solid #d7c9ee;border-radius:10px;background:#f3edfC;color:#6542b8;text-decoration:none;font-family:inherit;font-size:12px;font-weight:600;line-height:1.4}
-.tool-navigation a:hover{background:#e8dcfa}
-.tool-navigation a:focus-visible{outline:3px solid #7450df;outline-offset:3px}
-.app>.tool-navigation{grid-column:1 / -1;margin-bottom:0}
-header>.tool-navigation{margin-bottom:0}
-@media(max-width:650px){header>.tool-navigation{order:3;width:100%}}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FBFAF6">
+  <meta name="description" content="Timed mental arithmetic practice with adaptive difficulty, scores, streaks and explanations.">
+  <title>Number Pop · Maths Interactives</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/brand.css">
+  <style>
+    .title-row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+    .title-row .page-lede{margin:0}
+    .quiet{border:0;background:none;padding:6px 0;font-size:14px;font-weight:600;color:var(--ink-soft);cursor:pointer;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
+    .quiet:hover{color:var(--red);text-decoration-color:var(--red)}
+    .workspace{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
+    .play-panel{padding:24px 28px 28px;min-height:480px}
+    .panel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+    .badge{font-size:12px;font-weight:600;letter-spacing:.4px;color:var(--ink-soft);background:var(--wash);border-radius:99px;padding:4px 10px}
+    h2{font-family:var(--serif);font-weight:600;font-size:26px;letter-spacing:-.4px;margin:20px 0 4px}
+    .muted{font-size:15px;color:var(--ink-soft);margin:0}
+    fieldset{border:0;padding:0;margin:24px 0 0}
+    legend{padding:0;margin-bottom:10px;font-weight:600}
+    .operations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .op{display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 12px;border:1.5px solid var(--rule);border-radius:8px;background:var(--card);font-size:14px;font-weight:500;text-align:left;cursor:pointer}
+    .op b{min-width:26px;font-family:var(--serif);font-size:20px;font-weight:600;text-align:center}
+    .op:hover{border-color:var(--ink)}
+    .op.active{border-color:var(--ink);background:var(--ink);color:#fff}
+    .topic-notice,.difficulty-detail{font-size:13px;color:var(--ink-soft);margin:10px 0 0}
+    .difficulty-title{display:flex;justify-content:space-between;gap:10px;font-size:15px;align-items:center}
+    .difficulty-title output{font-weight:600}
+    .difficulty-field input[type=range]{margin:10px 0 4px}
+    .range-ends{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--ink-faint)}
+    .adaptive-option{display:flex;align-items:flex-start;gap:10px;font-size:15px;margin-top:16px;cursor:pointer}
+    .adaptive-option input{width:18px;height:18px;margin:2px 0 0;flex-shrink:0}
+    .adaptive-option small{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px}
+    .durations{display:flex;gap:8px}
+    .durations button{flex:1;padding:10px 6px;border:1.5px solid var(--rule);border-radius:8px;background:var(--card);font-size:16px;font-weight:600;cursor:pointer}
+    .durations button:hover{border-color:var(--ink)}
+    .durations span{display:block;font-size:12px;font-weight:400;color:var(--ink-soft);margin-top:2px}
+    .durations .active{border-color:var(--ink);background:var(--ink);color:#fff}
+    .durations .active span{color:#C9D1DF}
+    .start{width:100%;margin-top:24px;min-height:52px;font-size:16px}
+    .game-metrics{display:flex;justify-content:space-between;gap:12px;margin:20px 0 12px}
+    .game-metrics span{display:block;font-size:13px;color:var(--ink-soft)}
+    .game-metrics strong{font-family:var(--serif);font-size:32px;font-weight:600;display:block;line-height:1.1;font-variant-numeric:tabular-nums}
+    .time-track{height:6px;background:var(--wash);border-radius:3px;overflow:hidden}
+    .time-track div{height:100%;background:var(--ink);width:100%;transition:width .1s}
+    .question-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px}
+    .question-meta>span{font-size:13px;font-weight:600;color:var(--ink-soft);line-height:1.5}
+    .equation{text-align:center;font-family:var(--serif);font-size:52px;font-weight:600;letter-spacing:-1px;line-height:1.25;margin:28px 0;overflow-wrap:anywhere}
+    .equation.word-question{font-size:28px;letter-spacing:-.3px}
+    #answerForm{display:flex;gap:10px;max-width:400px;margin:auto}
+    #answer{flex:1;min-width:0;border:1.5px solid var(--ink);background:var(--card);border-radius:8px;text-align:center;font-size:30px;padding:6px;outline:none}
+    #answer:focus{box-shadow:0 0 0 3px var(--red-wash);border-color:var(--red)}
+    #answerForm .btn{min-width:110px}
+    .answer-hint{font-size:13px;color:var(--ink-soft);max-width:430px;margin:10px auto 0;text-align:center}
+    .answer-tools{display:flex;justify-content:space-between;align-items:center;max-width:400px;margin:6px auto;color:var(--ink-faint);font-size:13px}
+    .feedback{font-size:15px;background:var(--wash);border-radius:8px;padding:12px 14px 12px 14px;margin-top:14px;min-height:56px}
+    .feedback.good{background:var(--green-wash);color:var(--green);padding-left:44px;position:relative}
+    .feedback.good::before{content:"";position:absolute;left:14px;top:14px;width:20px;height:20px;background:url("../assets/logo-mark.svg") center/contain no-repeat}
+    .feedback.miss{background:var(--red-wash);color:var(--red-dark)}
+    #results{text-align:center}
+    .result-mark{width:64px;height:64px;margin:20px auto 0;display:block}
+    #results h2{margin-top:8px}
+    .result-stats{display:flex;justify-content:space-around;gap:12px;margin:24px 0}
+    .result-stats b{display:block;font-family:var(--serif);font-size:32px;font-weight:600}
+    .result-stats span{font-size:12px;letter-spacing:.4px;color:var(--ink-soft)}
+    .change{margin:12px 0}
+    #review{text-align:left}
+    #review h3{font-size:17px;margin:20px 0 8px}
+    .review-item{padding:12px 14px;background:var(--wash);border-radius:8px;margin:8px 0;font-size:15px}
+    .review-item p{color:var(--ink-soft);margin:4px 0 0;font-size:14px}
+    .side{display:flex;flex-direction:column;gap:16px}
+    .best-card{padding:20px 22px}
+    .best-number{font-family:var(--serif);font-size:56px;font-weight:600;letter-spacing:-1.5px;line-height:1;margin:8px 0 6px}
+    .best-card p{font-size:14px;color:var(--ink-soft);margin:0;overflow-wrap:anywhere}
+    .best-card small{display:block;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-faint)}
+    .how-card{padding:20px 22px}
+    .how-card h2{font-size:20px;margin:0 0 8px}
+    .how-card dl{margin:0}
+    .how-card dt{font-weight:600;font-size:15px;margin-top:12px}
+    .how-card dd{margin:2px 0 0;font-size:14px;color:var(--ink-soft)}
+    .history{padding:22px 24px;margin-top:24px}
+    .history-heading{display:flex;justify-content:space-between;align-items:center}
+    .history h2{margin:0 0 6px}
+    .history-row{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:space-between;border-top:1px solid var(--rule);padding:12px 0;font-size:14px}
+    .history-row:first-child{margin-top:16px}
+    .history-row span{color:var(--ink-soft)}
+    [hidden]{display:none!important}
+    @media (max-width:860px){.workspace{grid-template-columns:minmax(0,1fr)}.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+    @media (max-width:600px){
+      .play-panel{padding:18px}
+      .operations{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .op{font-size:13px;padding:8px 10px;gap:8px}
+      .side{grid-template-columns:minmax(0,1fr)}
+      .equation{font-size:38px}.equation.word-question{font-size:23px}
+      .game-metrics strong{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+  <header class="site-header">
+    <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt=""><span>maths interactives</span></a>
+    <nav class="site-nav" aria-label="Main"><a href="../">Home</a><a href="./" aria-current="page">Tools</a><a href="../diagnostic-quizzes/">Quizzes</a></nav>
+  </header>
+  <main id="main">
+    <h1 class="page-title">Number Pop</h1>
+    <div class="title-row">
+      <p class="page-lede">Timed mental maths. Pick your topics, level and time, then answer as many as you can.</p>
+      <button class="quiet" id="historyBtn">Your progress</button>
+    </div>
 
-.operations{grid-template-columns:repeat(3,minmax(0,1fr))}.op{min-height:48px}.op b{min-width:24px}.topic-notice,.difficulty-detail{font-size:11px;line-height:1.6;color:#80768c;margin:12px 0 0}.difficulty-title{display:flex;justify-content:space-between;gap:10px;font-size:12px;align-items:center}.difficulty-title output{font-weight:700;color:#6c46c5}.difficulty-field input[type=range]{width:100%;accent-color:#7450df;margin:19px 0 8px;cursor:pointer}.difficulty-field input[type=range]:focus-visible{outline:3px solid #c1a6f0;outline-offset:4px;border-radius:5px}.range-ends{display:flex;justify-content:space-between;gap:12px;font-size:10px;color:#81758f}.adaptive-option{display:flex;align-items:start;gap:10px;font-size:12px;margin-top:17px;cursor:pointer}.adaptive-option input{accent-color:#7450df;width:16px;height:16px;margin:1px 0 0;flex-shrink:0}.adaptive-option small{display:block;font-size:10px;line-height:1.6;color:#83788e;margin-top:4px}.equation{font-size:46px;overflow-wrap:anywhere;line-height:1.3;letter-spacing:-1.5px}.equation.word-question{font-size:29px;letter-spacing:-.6px}.answer-hint{font-size:11px;line-height:1.6;color:#776a86;max-width:430px;margin:13px auto 0;text-align:center}.question-meta>span{max-width:75%;line-height:1.5}.best-card p{overflow-wrap:anywhere}.history-row span{line-height:1.7}.best-bottom b{line-height:1.6}@media(max-width:650px){.equation{font-size:35px}.equation.word-question{font-size:24px}.operations{gap:7px}.op{font-size:10px;flex-direction:column;gap:3px}.difficulty-title{font-size:11px}}</style></head><body>
-<header><a class="brand" href="./" aria-label="Number Pop home"><span class="brand-icon">✳</span> number<span>pop</span><span class="brand-dot">.</span></a><nav class="tool-navigation" aria-label="Site navigation"><a href="./">← Interactive Tools</a><a href="../">Home</a></nav><button class="quiet" id="historyBtn">↗ Your progress</button></header>
-<main><section class="intro"><div><div class="eyebrow"><span></span> MENTAL ARITHMETIC PRACTICE</div><h1>Mental maths.<br><span>Timed practice.</span><svg viewBox="0 0 70 70" aria-hidden="true"><path d="M35 4v20M35 46v20M4 35h20M46 35h20M13 13l14 14M44 44l14 14M13 58l14-14M44 27l14-14"/></svg></h1><p>Practise arithmetic, fractions, percentages, decimals and time.<br>Choose your topics, difficulty and time limit.</p></div><div class="math-art" aria-hidden="true"><div class="art-circle">÷</div><div class="art-square">+</div><div class="art-star">×</div><div class="art-pill">=</div><span class="art-spark">✧</span></div></section>
-<div class="workspace"><section class="play-panel" aria-labelledby="playTitle"><div class="panel-top"><span class="mini-label" id="playTitle">TIMED PRACTICE</span><span class="badge" id="stateBadge">READY</span></div>
-<div id="setup"><h2>Set up <span>a round.</span></h2><p class="muted">Choose your topics, difficulty and time limit.</p><fieldset><legend>01 <span>Choose topics</span></legend><div class="operations"><button class="op active" data-op="add" aria-pressed="true"><b>+</b>Addition</button><button class="op active" data-op="sub" aria-pressed="true"><b>−</b>Subtraction</button><button class="op active" data-op="mul" aria-pressed="true"><b>×</b>Multiplication</button><button class="op active" data-op="div" aria-pressed="true"><b>÷</b>Division</button><button class="op" data-op="fractions" aria-pressed="false"><b aria-hidden="true">½</b>Fractions</button><button class="op" data-op="percent" aria-pressed="false"><b aria-hidden="true">%</b>Percentages</button><button class="op" data-op="decimals" aria-pressed="false"><b aria-hidden="true">0.1</b>Decimals</button><button class="op" data-op="time" aria-pressed="false"><b aria-hidden="true">◷</b>Time</button><button class="op" data-op="powers" aria-pressed="false"><b aria-hidden="true">x²</b>Powers &amp; roots</button></div><p class="topic-notice" id="topicNotice" role="status">Mix any topics. Keep at least one selected.</p></fieldset><fieldset class="difficulty-field"><legend>02 <span>Starting difficulty</span></legend><div class="difficulty-title"><label for="difficulty">Level</label><output id="difficultyValue" for="difficulty">1 · Single digit</output></div><input id="difficulty" type="range" min="1" max="6" value="1" step="1" aria-describedby="difficultyDetail"><div class="range-ends"><span>Single digit</span><span>Ultimate challenge</span></div><p id="difficultyDetail" class="difficulty-detail"></p><label class="adaptive-option"><input id="adaptive" type="checkbox"><span>Adjust difficulty during the round<small>Raises the level after fast correct answers and lowers it after repeated mistakes.</small></span></label></fieldset><fieldset><legend>03 <span>Choose duration</span></legend><div class="durations"><button data-time="30" aria-pressed="false">30 sec <span>Short round</span></button><button class="active" data-time="60" aria-pressed="true">60 sec <span>Standard round</span></button><button data-time="120" aria-pressed="false">120 sec <span>Long round</span></button></div></fieldset><button class="start" id="startBtn">Start round <span>↗</span></button><p class="setup-foot"><span>Fixed or adaptive difficulty</span><span>Keyboard input</span></p></div>
-<div id="game" hidden><div class="game-metrics"><div><span>TIME LEFT</span><strong id="timer">60s</strong></div><div><span>SCORE</span><strong id="score">0</strong></div><div><span>STREAK</span><strong id="streak">0</strong></div></div><div class="time-track"><div id="timeBar"></div></div><div class="question-meta"><span id="level">LEVEL 1</span><button id="endBtn" class="quiet">End round ↗</button></div><div id="equation" class="equation" aria-live="polite"></div><form id="answerForm"><label class="sr-only" for="answer">Your answer</label><input id="answer" type="text" inputmode="decimal" autocomplete="off" placeholder="?" aria-describedby="answerHint" required><button class="start" type="submit">Check <span>↵</span></button></form><p id="answerHint" class="answer-hint">Enter a number, decimal or fraction.</p><div class="answer-tools"><span>Press Enter to check</span><button class="quiet" id="skipBtn">Skip →</button></div><div id="feedback" role="status" class="feedback">Type your answer and press Enter.</div></div>
-<div id="results" hidden><span class="result-star">✹</span><h2 id="resultTitle">Round complete</h2><p id="resultSub" class="muted"></p><div id="resultStats" class="result-stats"></div><button id="againBtn" class="start">Start another round <span>↗</span></button><button class="quiet change" id="changeBtn">Change round settings</button><div id="review"></div></div>
-</section><aside><section class="best-card"><div class="mini-label">PERSONAL BEST <span>↗</span></div><div class="trophy" aria-hidden="true">✴</div><div class="best-number" id="bestScore">—</div><h3>Your personal best</h3><p id="bestCaption">No rounds recorded for these settings.</p><div class="best-bottom"><span>COMPARE SCORES</span><b>Same topics, duration and difficulty</b></div></section><section class="how-card"><span class="mini-label">HOW IT WORKS</span><p><b class="tip-icon purple">↗</b><span><strong>Adaptive difficulty</strong><small>Choose a fixed starting level, or enable automatic changes during the round.</small></span></p><p><b class="tip-icon orange">✦</b><span><strong>Streak bonuses</strong><small>Every fifth consecutive correct answer adds 25 bonus points.</small></span></p><p><b class="tip-icon green">✓</b><span><strong>Answer explanations</strong><small>Review a calculation method for each missed question.</small></span></p></section></aside></div>
-<section class="history" id="history" hidden><div class="history-heading"><h2>Recent rounds</h2><button class="quiet" id="closeHistory">Close ×</button></div><p class="muted">Recent rounds, saved in this browser. Best scores are tracked separately by topic mix, duration, starting level and adaptive setting.</p><div id="historyList"></div><p id="storageNotice" class="muted"></p></section>
-<footer><span>Number Pop · Mental arithmetic</span><span>TIMED ARITHMETIC PRACTICE <b>✳</b></span></footer></main><script type="module" src="number-pop-app.mjs"></script></body></html>
+    <div class="workspace">
+      <section class="card play-panel" aria-labelledby="playTitle">
+        <div class="panel-top"><span class="label" id="playTitle">Timed practice</span><span class="badge" id="stateBadge">READY</span></div>
+
+        <div id="setup">
+          <h2>Set up a round</h2>
+          <fieldset>
+            <legend>Topics</legend>
+            <div class="operations">
+              <button class="op active" data-op="add" aria-pressed="true"><b>+</b>Addition</button>
+              <button class="op active" data-op="sub" aria-pressed="true"><b>−</b>Subtraction</button>
+              <button class="op active" data-op="mul" aria-pressed="true"><b>×</b>Multiplication</button>
+              <button class="op active" data-op="div" aria-pressed="true"><b>÷</b>Division</button>
+              <button class="op" data-op="fractions" aria-pressed="false"><b aria-hidden="true">½</b>Fractions</button>
+              <button class="op" data-op="percent" aria-pressed="false"><b aria-hidden="true">%</b>Percentages</button>
+              <button class="op" data-op="decimals" aria-pressed="false"><b aria-hidden="true">.1</b>Decimals</button>
+              <button class="op" data-op="time" aria-pressed="false"><b aria-hidden="true">◷</b>Time</button>
+              <button class="op" data-op="powers" aria-pressed="false"><b aria-hidden="true">x²</b>Powers and roots</button>
+            </div>
+            <p class="topic-notice" id="topicNotice" role="status">Mix any topics. Keep at least one selected.</p>
+          </fieldset>
+          <fieldset class="difficulty-field">
+            <legend>Starting difficulty</legend>
+            <div class="difficulty-title"><label for="difficulty">Level</label><output id="difficultyValue" for="difficulty">1 · Single digit</output></div>
+            <input id="difficulty" type="range" min="1" max="6" value="1" step="1" aria-describedby="difficultyDetail">
+            <div class="range-ends"><span>Single digit</span><span>Ultimate challenge</span></div>
+            <p id="difficultyDetail" class="difficulty-detail"></p>
+            <label class="adaptive-option"><input id="adaptive" type="checkbox"><span>Adjust difficulty during the round<small>Goes up after fast correct answers and down after repeated mistakes.</small></span></label>
+          </fieldset>
+          <fieldset>
+            <legend>Duration</legend>
+            <div class="durations">
+              <button data-time="30" aria-pressed="false">30 sec <span>Short</span></button>
+              <button class="active" data-time="60" aria-pressed="true">60 sec <span>Standard</span></button>
+              <button data-time="120" aria-pressed="false">120 sec <span>Long</span></button>
+            </div>
+          </fieldset>
+          <button class="btn start" id="startBtn">Start round</button>
+        </div>
+
+        <div id="game" hidden>
+          <div class="game-metrics">
+            <div><span>Time left</span><strong id="timer">60s</strong></div>
+            <div><span>Score</span><strong id="score">0</strong></div>
+            <div><span>Streak</span><strong id="streak">0</strong></div>
+          </div>
+          <div class="time-track"><div id="timeBar"></div></div>
+          <div class="question-meta"><span id="level">LEVEL 1</span><button id="endBtn" class="quiet">End round</button></div>
+          <div id="equation" class="equation" aria-live="polite"></div>
+          <form id="answerForm">
+            <label class="sr-only" for="answer">Your answer</label>
+            <input id="answer" type="text" inputmode="decimal" autocomplete="off" placeholder="?" aria-describedby="answerHint" required>
+            <button class="btn" type="submit">Check</button>
+          </form>
+          <p id="answerHint" class="answer-hint">Enter a number, decimal or fraction.</p>
+          <div class="answer-tools"><span>Press Enter to check</span><button class="quiet" id="skipBtn">Skip</button></div>
+          <div id="feedback" role="status" class="feedback">Type your answer and press Enter.</div>
+        </div>
+
+        <div id="results" hidden>
+          <img class="result-mark" src="../assets/logo-mark.svg" alt="">
+          <h2 id="resultTitle">Round complete</h2>
+          <p id="resultSub" class="muted"></p>
+          <div id="resultStats" class="result-stats"></div>
+          <button id="againBtn" class="btn start">Start another round</button>
+          <button class="quiet change" id="changeBtn">Change round settings</button>
+          <div id="review"></div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section class="card best-card">
+          <span class="label">Personal best</span>
+          <div class="best-number" id="bestScore">—</div>
+          <p id="bestCaption">No rounds recorded for these settings.</p>
+          <small>Compared with rounds using the same topics, duration and difficulty.</small>
+        </section>
+        <section class="panel how-card">
+          <h2>How scoring works</h2>
+          <dl>
+            <dt>Points</dt><dd>10 points × the current level for each correct answer.</dd>
+            <dt>Streaks</dt><dd>Every fifth correct answer in a row adds 25 bonus points.</dd>
+            <dt>Explanations</dt><dd>See a method for each question you missed at the end of the round.</dd>
+          </dl>
+        </section>
+      </aside>
+    </div>
+
+    <section class="card history" id="history" hidden>
+      <div class="history-heading"><h2>Recent rounds</h2><button class="quiet" id="closeHistory">Close</button></div>
+      <p class="muted">Saved in this browser. Best scores are tracked separately for each mix of topics, duration, starting level and adaptive setting.</p>
+      <div id="historyList"></div>
+      <p id="storageNotice" class="muted"></p>
+    </section>
+  </main>
+</div>
+<script type="module" src="number-pop-app.mjs"></script>
+</body>
+</html>

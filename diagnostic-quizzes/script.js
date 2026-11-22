@@ -70,12 +70,16 @@ async function loadQuizList() {
   }
 }
 
+function quizSlug(quizInfo) {
+  return quizInfo.file.split("/").pop().replace(/\.json$/, "");
+}
+
 // Lets other pages link straight to a quiz, e.g. ?quiz=prime-numbers
 function openQuizFromUrl() {
   const slug = new URLSearchParams(location.search).get("quiz");
   if (!slug) return;
   for (const topic of state.topics) {
-    const quizInfo = topic.quizzes.find((q) => q.file.split("/").pop().replace(/\.json$/, "") === slug);
+    const quizInfo = topic.quizzes.find((q) => quizSlug(q) === slug);
     if (quizInfo) {
       state.selectedTopic = topic;
       loadQuiz(quizInfo);
@@ -88,16 +92,17 @@ function renderTopicMenu() {
   menuView.classList.remove("hidden");
   quizView.classList.add("hidden");
   state.selectedTopic = null;
-  menuTitle.textContent = "Diagnostic Quizzes";
-  menuSubtitle.textContent = "Select a topic.";
+  menuTitle.textContent = "Diagnostic quizzes";
+  menuSubtitle.textContent = "Choose a topic, then answer a few questions to check what you know.";
   quizMenu.className = "quiz-menu topic-menu";
   quizMenu.innerHTML = "";
 
   state.topics.forEach((topic) => {
     const button = document.createElement("button");
-    button.className = "topic-card-btn";
+    const count = topic.quizzes.length;
+    button.className = count ? "topic-card-btn" : "topic-card-btn is-empty";
     button.type = "button";
-    button.innerHTML = `<span class="topic-card-title">${topic.topic}</span><span class="topic-card-icon">${topicIcon(topic.icon)}</span>`;
+    button.innerHTML = `<span class="topic-card-icon">${topicIcon(topic.icon)}</span><span><span class="topic-card-title">${topic.topic}</span><span class="topic-card-count">${count ? `${count} quiz${count === 1 ? "" : "zes"}` : "Coming soon"}</span></span>`;
     button.addEventListener("click", () => renderQuizMenu(topic));
     quizMenu.appendChild(button);
   });
@@ -115,7 +120,7 @@ function renderQuizMenu(topic) {
   const backButton = document.createElement("button");
   backButton.className = "quiz-card-btn back-topic-btn";
   backButton.type = "button";
-  backButton.innerHTML = `<div class="quiz-card-title">← Back to topics</div>`;
+  backButton.innerHTML = `<div class="quiz-card-title">← All topics</div>`;
   backButton.addEventListener("click", renderTopicMenu);
   quizMenu.appendChild(backButton);
 
@@ -273,11 +278,11 @@ function renderSummary() {
   quizView.innerHTML = `
     <h1 class="summary-title">Quiz complete</h1>
     <div class="summary-score">You scored ${state.score} out of ${quiz.questions.length} (${percentage}%).</div>
-    <p style="font-size: 1.2rem; color: var(--muted); margin-bottom: 18px;">Review the questions below. Green means correct; red means not quite.</p>
+    <p style="font-size: 1.2rem; color: var(--muted); margin-bottom: 18px;">Review the questions below. Ticked answers were correct.</p>
     <div class="review-list">
       ${state.responses.map((response, index) => `
         <div class="review-item ${response.wasCorrect ? "review-correct" : "review-not-quite"}">
-          <span class="review-icon ${response.wasCorrect ? "correct-icon" : "not-quite-icon"}">${response.wasCorrect ? "✓" : "×"}</span>
+          <span class="review-icon ${response.wasCorrect ? "correct-icon" : "not-quite-icon"}">${response.wasCorrect ? '<img src="../assets/logo-mark.svg" alt="">' : "×"}</span>
           <div>
             <strong>Q${index + 1}: ${response.wasCorrect ? "Correct" : "Not quite"}</strong>
             <span class="math-review">${response.question}</span><br>
@@ -288,8 +293,8 @@ function renderSummary() {
       `).join("")}
     </div>
     <div class="actions">
-      <button class="secondary-btn" onclick="location.reload()">Back to menu</button>
-      <button class="restart-btn show" onclick="location.reload()">Restart quiz</button>
+      <a class="secondary-btn" href="./">All quizzes</a>
+      <a class="restart-btn show" href="?quiz=${quizSlug(state.quizInfo)}">Try again</a>
     </div>
   `;
   renderMathIn(quizView);
