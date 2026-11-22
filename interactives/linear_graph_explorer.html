@@ -8,7 +8,9 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/brand.css">
   <style>
-    .layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:24px;align-items:start}
+    /* The graph takes all the width the fixed-size controls column leaves */
+    .page-wide{max-width:1480px}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
     .graph-card{padding:12px;display:flex;flex-direction:column;gap:10px}
     .graph-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:2px 2px 0}
     .icon-btn{width:40px;min-height:40px;padding:0;font-size:22px;line-height:1}
@@ -37,7 +39,7 @@
 
     .options{padding:14px 18px}
     .options h2{font-size:14px;font-weight:700;margin:0 0 8px}
-    .toggles{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+    .toggles{display:grid;grid-template-columns:1fr;gap:6px}
     .toggles label{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer}
     .toggles input{width:18px;height:18px;margin:0}
     .axes-grid{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:8px 10px;align-items:center;font-size:14px}
@@ -53,12 +55,12 @@
     .axis-letter{font-family:var(--serif);font-style:italic;font-size:calc(20px * var(--k, 1));font-weight:600;fill:#1B2A4A}
     .point-label{font-family:var(--sans);font-size:calc(13px * var(--k, 1));font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
     @media (max-width:860px){.layout{grid-template-columns:1fr}.equation-row{font-size:32px}}
-    @media (max-width:480px){.tool-hint{display:none}.toggles{grid-template-columns:1fr}}
+    @media (max-width:480px){.tool-hint{display:none}}
   </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="page">
+<div class="page page-wide">
   <header class="site-header">
     <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt=""><span>maths interactives</span></a>
     <nav class="site-nav" aria-label="Main"><a href="../">Home</a><a href="./" aria-current="page">Tools</a><a href="../diagnostic-quizzes/">Quizzes</a></nav>
@@ -85,11 +87,11 @@
 
         <div class="panel control">
           <label for="gradient">Gradient, m <span id="mValue">1</span></label>
-          <input id="gradient" type="range" min="-5" max="5" step="0.1" value="1">
+          <input id="gradient" type="range" min="-5" max="5" step="0.5" value="1">
         </div>
         <div class="panel control">
           <label for="intercept">y-intercept, c <span id="cValue">0</span></label>
-          <input id="intercept" type="range" min="-10" max="10" step="0.1" value="0">
+          <input id="intercept" type="range" min="-10" max="10" step="0.5" value="0">
         </div>
 
         <div class="values">
@@ -103,7 +105,7 @@
           <div class="toggles">
             <label><input type="checkbox" data-show="equation" checked> Equation and values</label>
             <label><input type="checkbox" data-show="line" checked> Line</label>
-            <label><input type="checkbox" data-show="intercepts" checked> Intercepts</label>
+            <label><input type="checkbox" data-show="intercepts"> Intercepts</label>
             <label><input type="checkbox" data-show="triangle"> Gradient triangle</label>
             <label><input type="checkbox" data-show="grid" checked> Grid</label>
           </div>
@@ -142,7 +144,7 @@
   let view = { ...DEFAULT_VIEW };
   let userStep = { x: null, y: null };
   let m = 1, c = 0;
-  const show = { equation: true, line: true, intercepts: true, triangle: false, grid: true };
+  const show = { equation: true, line: true, intercepts: false, triangle: false, grid: true };
 
   // ---------- Numbers and equations ----------
   const round = (n, dp = 2) => { const r = Math.round(n * 10 ** dp) / 10 ** dp; return Object.is(r, -0) ? 0 : r; };
@@ -350,8 +352,8 @@
     const xTicks = ticks(view.xmin, view.xmax, xStep), yTicks = ticks(view.ymin, view.ymax, yStep);
 
     if (show.grid) {
-      xTicks.forEach((t) => add("line", { x1: sx(t), y1: 0, x2: sx(t), y2: H, stroke: "#E8ECF3", "stroke-width": 1 }));
-      yTicks.forEach((t) => add("line", { x1: 0, y1: sy(t), x2: W, y2: sy(t), stroke: "#E8ECF3", "stroke-width": 1 }));
+      xTicks.forEach((t) => add("line", { x1: sx(t), y1: 0, x2: sx(t), y2: H, stroke: "#C5CEDD", "stroke-width": 1 }));
+      yTicks.forEach((t) => add("line", { x1: 0, y1: sy(t), x2: W, y2: sy(t), stroke: "#C5CEDD", "stroke-width": 1 }));
     }
 
     // Axes sit at zero, or along the edge when zero is off screen
