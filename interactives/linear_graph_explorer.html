@@ -125,7 +125,7 @@
             <input type="number" id="ymax" aria-label="y maximum" step="any">
             <input type="number" id="ystep" aria-label="y step" step="any" min="0" placeholder="auto">
           </div>
-          <p class="axes-note">Leave the step blank to choose it automatically.</p>
+          <p class="axes-note">Step is the value of one grid square, so changing it rescales that axis. Leave it blank for automatic.</p>
         </div>
       </div>
     </div>
@@ -142,6 +142,7 @@
   // Square, with equal x and y ranges, so the grid is made of squares
   const W = 700, H = 700;
   const DEFAULT_VIEW = { xmin: -10, xmax: 10, ymin: -10, ymax: 10 };
+  const CELLS = 20; // grid squares across each axis when a step is set
   const HELP = "Type an equation, e.g. 2x + 1 or x/2 − 3";
   let view = { ...DEFAULT_VIEW };
   let userStep = { x: null, y: null };
@@ -321,7 +322,17 @@
       const v = Number(input.value);
       const ok = input.value === "" || v > 0;
       input.classList.toggle("invalid", !ok);
-      if (ok) { userStep[axis] = input.value === "" ? null : v; render(); }
+      if (!ok) return;
+      userStep[axis] = input.value === "" ? null : v;
+      // A step is the value of one grid square. Keep the same number of squares (and so the same
+      // square size on screen) and stretch the axis to fit: a bigger step squashes the graph.
+      if (userStep[axis]) {
+        const [lo, hi] = axis === "x" ? ["xmin", "xmax"] : ["ymin", "ymax"];
+        const mid = Math.round((view[lo] + view[hi]) / 2 / v) * v;
+        view[lo] = mid - (CELLS / 2) * v;
+        view[hi] = mid + (CELLS / 2) * v;
+      }
+      render();
     });
   });
 
@@ -368,9 +379,14 @@
     const yLabelRight = axisX < 36 * k;
     // Leave room for the x-intercept's label
     const xiPx = show.line && show.intercepts && show.equation && m !== 0 ? sx(-c / m) : null;
+    // Number every grid line unless they're closer than ~28 screen pixels, then every 2nd, 5th...
+    const toScreen = (graph.clientWidth || W) / W;
+    const labelEvery = (step, px) => { const need = 28 / (px * toScreen); return need <= 1 ? 1 : need <= 2 ? 2 : need <= 5 ? 5 : 10; };
+    const xEvery = labelEvery(xStep, sx(xStep) - sx(0)), yEvery = labelEvery(yStep, sy(0) - sy(yStep));
     xTicks.forEach((t) => {
       const X = sx(t);
       if (t === 0 || X < 10 || X > W - 24) return;
+      if (Math.round(t / xStep) % xEvery !== 0) return;
       if (xiPx !== null && Math.abs(X - xiPx) < 30 && xLabelY > axisY) return;
       add("line", { x1: X, y1: axisY - 4, x2: X, y2: axisY + 4, stroke: "#1B2A4A", "stroke-width": 1.5 });
       add("text", { x: X, y: xLabelY, "text-anchor": "middle", class: "graph-text" }, fmt(t, 4));
@@ -378,6 +394,7 @@
     yTicks.forEach((t) => {
       const Y = sy(t);
       if (t === 0 || Y < 24 || Y > H - 8) return;
+      if (Math.round(t / yStep) % yEvery !== 0) return;
       add("line", { x1: axisX - 4, y1: Y, x2: axisX + 4, y2: Y, stroke: "#1B2A4A", "stroke-width": 1.5 });
       add("text", { x: yLabelRight ? axisX + 8 : axisX - 8, y: Y + 4 * k, "text-anchor": yLabelRight ? "start" : "end", class: "graph-text" }, fmt(t, 4));
     });
