@@ -64,8 +64,23 @@ async function loadQuizList() {
     const list = await response.json();
     state.topics = Array.isArray(list) && list[0] && list[0].quizzes ? list : [{ topic: "Quizzes", icon: "number", quizzes: list }];
     renderTopicMenu();
+    openQuizFromUrl();
   } catch (error) {
     showLoadError(error);
+  }
+}
+
+// Lets other pages link straight to a quiz, e.g. ?quiz=prime-numbers
+function openQuizFromUrl() {
+  const slug = new URLSearchParams(location.search).get("quiz");
+  if (!slug) return;
+  for (const topic of state.topics) {
+    const quizInfo = topic.quizzes.find((q) => q.file.split("/").pop().replace(/\.json$/, "") === slug);
+    if (quizInfo) {
+      state.selectedTopic = topic;
+      loadQuiz(quizInfo);
+      return;
+    }
   }
 }
 
